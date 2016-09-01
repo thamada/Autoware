@@ -16,6 +16,8 @@ buttons :
     desc  : sensing_qs desc sample
     run   : roslaunch
     param : sensing_qs
+    gui   :
+      flags : [ SIGTERM, kill_children ]
   localization_qs :
     desc  : localization_qs desc sample
     run   : roslaunch
@@ -57,6 +59,8 @@ buttons :
     desc : rviz_qs desc sample
     #run : rosrun rviz rviz
     run  : sh -c '$(rospack find runtime_manager)/../../../.config/rviz/cmd.sh'
+    gui  :
+      flags : [ kill_children ]
 
   rqt_qs :
     desc: rqt_qs desc sample
