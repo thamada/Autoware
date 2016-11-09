@@ -331,7 +331,7 @@ public:
 		//std::cout << "TRACKERS: " << obj_trackers_.size() << std::endl;
 
 		obj_detections_.clear();
-        ranges_.clear();
+		ranges_.clear();
 
 		cv_tracker::image_obj_tracked tmp_objects_msg;
 

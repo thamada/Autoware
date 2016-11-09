@@ -105,9 +105,9 @@ def readXML(file):
 			###################
 			#create box on origin, then translate and rotate according to pose. finally, project into 2D image
 			# Rotate and translate 3D bounding box in velodyne coordinate system
-			R = np.array([[math.cos(rz), -math.sin(rz), 0], 
-				[math.sin(rz), math.cos(rz), 0],
-				[0, 0, 1]])
+			R = np.array([	[math.cos(rz), 	-math.sin(rz), 	0], 
+							[math.sin(rz), 	math.cos(rz), 	0],
+							[0, 			0, 				1]])
 			corner_3d = np.dot(R,np.array([corner_x, corner_y, corner_z]))
 			#Translate
 			corner_3d[0,:] = corner_3d[0,:] + tx
@@ -165,20 +165,34 @@ def callback(data):
 	header = data.header
 	frame = header.seq
 
-	boxes = BoundingBoxArray()
+	boxes = BoundingBoxArray() #3D Boxes with JSK
 	boxes.header = header
 	
-	rects = image_obj()
+	rects = image_obj() #Rects Autoware
 	rects.header = header
 	rects.type = "car"
 	
-	texts = PictogramArray()
-	texts.header = header	
+	texts = PictogramArray() #Labels with JSK
+	texts.header = header
 
 	if kitti_data.has_key(frame) == True:
 		for b in kitti_data[frame]:
 			b.header = header
 			boxes.boxes.append(b)
+			
+			#get rect corners
+			(rx, ry, rz) = tf.transformations.euler_from_quaternion(b.orientation)
+			corner_x = np.array([b.dimensions.x/2, b.dimensions.x/2, -b.dimensions.x/2, -b.dimensions.x/2, b.dimensions.x/2, b.dimensions.x/2, -b.dimensions.x/2, -b.dimensions.x/2])
+			corner_y = np.array([b.dimensions.y/2, -b.dimensions.y/2, -b.dimensions.y/2, b.dimensions.y/2, b.dimensions.y/2, -b.dimensions.y/2, -b.dimensions.y/2, b.dimensions.y/2])
+			corner_z = np.array([0, 0, 0, 0, b.dimensions.z, b.dimensions.z, b.dimensions.z, b.dimensions.z])
+			rz = wrapToPi(rz)
+			R = np.array([	[math.cos(rz), 	-math.sin(rz), 	0], 
+							[math.sin(rz), 	math.cos(rz), 	0],
+							[0, 			0, 				1]])
+			corner_3d = np.dot(R,np.array([corner_x, corner_y, corner_z]))
+			corner_3d[0,:] = corner_3d[0,:] + tx
+			corner_3d[1,:] = corner_3d[1,:] + ty
+			corner_3d[2,:] = corner_3d[2,:] + tz
 	
 	if auto_boxes.has_key(frame) == True:
 		for rect in auto_boxes[frame]:
@@ -227,12 +241,13 @@ def publishProjectionMatrix(pathToCalibrationFile):
 	#projection_publisher.publish(projection_message)
 
 def run():
-	global pub, pub_boxes, pub_pictograms
+	global pub, pub_boxes, pub_pictograms, pub_points_clusters
 	global projection_publisher
 	rospy.init_node('kitti_box_publisher', anonymous=True)
 	pub = rospy.Publisher('kitti_box', BoundingBoxArray, queue_size=1)
 	pub_boxes = rospy.Publisher('/obj_car/image_obj', image_obj, queue_size=1)
 	pub_pictograms = rospy.Publisher('kitti_3d_labels', PictogramArray, queue_size=1)
+	pub_points_clusters = rospy.Publisher('points_cluster', PointCloud2, queue_size=1)
 	#projection_publisher = rospy.Publisher('projection_matrix', projection_matrix, queue_size=1, latch=True)
 	rospy.Subscriber("/kitti_player/hdl64e", PointCloud2, callback)
 	

@@ -43,7 +43,7 @@
 
 	<!-- kitti player -->
     <node name="kitti_player" pkg="kitti_player" type="kitti_player"
-          args= "-d $(arg directory) -f 10 -v -g -i -C -G -T"
+          args= "-d $(arg directory) -f 1 -v -g -i -C -G -T" 
           />
 
 
