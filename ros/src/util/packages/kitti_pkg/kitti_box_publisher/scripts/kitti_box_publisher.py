@@ -179,21 +179,7 @@ def callback(data):
 		for b in kitti_data[frame]:
 			b.header = header
 			boxes.boxes.append(b)
-			
-			#get rect corners
-			(rx, ry, rz) = tf.transformations.euler_from_quaternion(b.orientation)
-			corner_x = np.array([b.dimensions.x/2, b.dimensions.x/2, -b.dimensions.x/2, -b.dimensions.x/2, b.dimensions.x/2, b.dimensions.x/2, -b.dimensions.x/2, -b.dimensions.x/2])
-			corner_y = np.array([b.dimensions.y/2, -b.dimensions.y/2, -b.dimensions.y/2, b.dimensions.y/2, b.dimensions.y/2, -b.dimensions.y/2, -b.dimensions.y/2, b.dimensions.y/2])
-			corner_z = np.array([0, 0, 0, 0, b.dimensions.z, b.dimensions.z, b.dimensions.z, b.dimensions.z])
-			rz = wrapToPi(rz)
-			R = np.array([	[math.cos(rz), 	-math.sin(rz), 	0], 
-							[math.sin(rz), 	math.cos(rz), 	0],
-							[0, 			0, 				1]])
-			corner_3d = np.dot(R,np.array([corner_x, corner_y, corner_z]))
-			corner_3d[0,:] = corner_3d[0,:] + tx
-			corner_3d[1,:] = corner_3d[1,:] + ty
-			corner_3d[2,:] = corner_3d[2,:] + tz
-	
+
 	if auto_boxes.has_key(frame) == True:
 		for rect in auto_boxes[frame]:
 			rects.obj.append(rect)
