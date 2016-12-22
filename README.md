@@ -92,7 +92,7 @@ See Autoware/docs. As of Aug 25 2015, we provide only Japanese documents. Englis
 
 ## Research Papers for Citation
 
-1. S. Kato, E. Takeuchi, Y. Ishiguro, Y. Ninomiya, K. Takeda, and T. Hamada. "An Open Approach to Autonomous Vehicles", IEEE Micro, Vol. 35, No. 6, pp. 60-69, 2015. [![Link](http://dl.acm.org/citation.cfm?id=2881680)]
+[1. S. Kato, E. Takeuchi, Y. Ishiguro, Y. Ninomiya, K. Takeda, and T. Hamada. "An Open Approach to Autonomous Vehicles", IEEE Micro, Vol. 35, No. 6, pp. 60-69, 2015.](http://dl.acm.org/citation.cfm?id=2881680)
 
 
 ## Instruction Videos
