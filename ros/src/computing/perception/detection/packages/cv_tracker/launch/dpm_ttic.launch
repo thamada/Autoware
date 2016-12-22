@@ -4,8 +4,6 @@
   <arg name="use_gpu" default="false"/>
   <arg name="sync" default="false" />
 
-  <arg name="camera_id" default="/"/>
-
   <group if="$(arg car)">
     <group ns="obj_car">
 
@@ -13,7 +11,6 @@
       <arg name="comp_model_car" default="$(find cv_tracker)/data/car_comp.csv"/>
       <arg name="root_model_car" default="$(find cv_tracker)/data/car_root.csv"/>
       <arg name="part_model_car" default="$(find cv_tracker)/data/car_part.csv"/>
-      <arg name="image_src_car" default="/image_raw"/>
 
       <!-- dpm detection -->
       <node pkg="cv_tracker" name="dpm" type="dpm_ttic">
@@ -23,7 +20,6 @@
         <param name="root_model_path" type="str" value="$(arg root_model_car)"/>
         <param name="part_model_path" type="str" value="$(arg part_model_car)"/>
         <param name="use_gpu" type="bool" value="$(arg use_gpu)"/>
-        <param name="image_raw_topic" type="str" value="$(arg camera_id)$(arg image_src_car)"/>
         <remap from="/image_raw" to="/sync_drivers/image_raw" if="$(arg sync)" />
       </node>
     </group>
@@ -36,7 +32,6 @@
       <arg name="comp_model_pedestrian" default="$(find cv_tracker)/data/person_comp.csv"/>
       <arg name="root_model_pedestrian" default="$(find cv_tracker)/data/person_root.csv"/>
       <arg name="part_model_pedestrian" default="$(find cv_tracker)/data/person_part.csv"/>
-      <arg name="image_src_pedestrian" default="/image_raw"/>
 
       <!-- dpm detection -->
       <node pkg="cv_tracker" name="dpm" type="dpm_ttic">
@@ -46,7 +41,6 @@
         <param name="root_model_path" type="str" value="$(arg root_model_pedestrian)"/>
         <param name="part_model_path" type="str" value="$(arg part_model_pedestrian)"/>
         <param name="use_gpu" type="bool" value="$(arg use_gpu)"/>
-        <param name="image_raw_topic" type="str" value="$(arg camera_id)$(arg image_src_pedestrian)"/>
         <remap from="/image_raw" to="/sync_drivers/image_raw" if="$(arg sync)" />
       </node>
     </group>

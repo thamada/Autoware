@@ -30,7 +30,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES lane_detector
-   CATKIN_DEPENDS roscpp message_runtime std_msgs sensor_msgs
+#  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
 
@@ -39,7 +39,6 @@ catkin_package(
 ###########
 
 include_directories(
-  ${catkin_INCLUDE_DIRS}
   nodes/lane_detector
   ${OpenCV_INCLUDE_DIRS}
 )

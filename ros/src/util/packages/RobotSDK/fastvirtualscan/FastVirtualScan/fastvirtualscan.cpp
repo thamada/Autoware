@@ -208,7 +208,7 @@ void FastVirtualScan::getVirtualScan(double thetaminheight, double thetamaxheigh
             {
                 if(roadfilterflag)
                 {
-                    virtualScan[i]=MAXVIRTUALSCAN;
+                    virtualScan[i]=0;
                     minheights[i]=0;//svsback[i][startrotid].height;
                     maxheights[i]=0;//svsback[i][startrotid].height;
                 }

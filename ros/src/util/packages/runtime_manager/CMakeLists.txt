@@ -17,15 +17,9 @@ add_message_files(
   ConfigNdt.msg
   ConfigNdtMapping.msg
   ConfigNdtMappingOutput.msg
-  ConfigICP.msg
-  ConfigVoxelGridFilter.msg
-  ConfigRingFilter.msg
-  ConfigDistanceFilter.msg
-  ConfigRandomFilter.msg
   ConfigWaypointFollower.msg
   ConfigTwistFilter.msg
   ConfigVelocitySet.msg
-  ConfigLatticeVelocitySet.msg
   ConfigCarKf.msg
   ConfigPedestrianKf.msg
   ConfigLaneRule.msg

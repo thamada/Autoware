@@ -4,7 +4,6 @@ project(gnss_localizer)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
-  nmea_msgs
   tf
   gnss
 )
@@ -15,7 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES lane_follower
-  CATKIN_DEPENDS roscpp std_msgs nmea_msgs tf
+  CATKIN_DEPENDS roscpp std_msgs tf 
   DEPENDS gnss
 )
 
@@ -23,7 +22,7 @@ catkin_package(
 ## Build ##
 ###########
 
-SET(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall ${CMAKE_CXX_FLAGS}")
+SET(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall -Wno-unused-result -DROS ${CMAKE_CXX_FLAGS}")
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations

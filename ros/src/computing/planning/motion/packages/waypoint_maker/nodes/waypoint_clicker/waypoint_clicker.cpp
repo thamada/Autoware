@@ -32,7 +32,9 @@
 #include <ros/console.h>
 #include <tf/transform_listener.h>
 
-#include <vector_map/vector_map.h>
+#include <map_file/PointClassArray.h>
+#include <map_file/LaneArray.h>
+#include <map_file/NodeArray.h>
 
 #include <lane_planner/vmap.hpp>
 
@@ -65,7 +67,7 @@ void create_route(const geometry_msgs::PointStamped& msg)
 	point.x = msg.point.x + transform.getOrigin().x();
 	point.y = msg.point.y + transform.getOrigin().y();
 	point.z = msg.point.z + transform.getOrigin().z();
-	coarse_vmap.points.push_back(lane_planner::vmap::create_vector_map_point(point));
+	coarse_vmap.points.push_back(lane_planner::vmap::create_map_file_pointclass(point));
 	lane_planner::vmap::publish_add_marker(marker_pub, selection_marker, coarse_vmap.points);
 
 	if (coarse_vmap.points.size() < 2)
@@ -104,21 +106,21 @@ void update_values()
 					       lane_planner::vmap::create_merging_points(lane_vmap));
 }
 
-void cache_point(const vector_map::PointArray& msg)
+void cache_point(const map_file::PointClassArray& msg)
 {
-	all_vmap.points = msg.data;
+	all_vmap.points = msg.point_classes;
 	update_values();
 }
 
-void cache_lane(const vector_map::LaneArray& msg)
+void cache_lane(const map_file::LaneArray& msg)
 {
-	all_vmap.lanes = msg.data;
+	all_vmap.lanes = msg.lanes;
 	update_values();
 }
 
-void cache_node(const vector_map::NodeArray& msg)
+void cache_node(const map_file::NodeArray& msg)
 {
-	all_vmap.nodes = msg.data;
+	all_vmap.nodes = msg.nodes;
 	update_values();
 }
 
@@ -227,7 +229,7 @@ int main(int argc, char **argv)
 	}
 
 	ros::Subscriber pose_sub = n.subscribe("/clicked_point", sub_pose_queue_size, create_route);
-	ros::Subscriber point_sub = n.subscribe("/vector_map_info/point", sub_vmap_queue_size, cache_point);
+	ros::Subscriber point_sub = n.subscribe("/vector_map_info/point_class", sub_vmap_queue_size, cache_point);
 	ros::Subscriber lane_sub = n.subscribe("/vector_map_info/lane", sub_vmap_queue_size, cache_lane);
 	ros::Subscriber node_sub = n.subscribe("/vector_map_info/node", sub_vmap_queue_size, cache_node);
 

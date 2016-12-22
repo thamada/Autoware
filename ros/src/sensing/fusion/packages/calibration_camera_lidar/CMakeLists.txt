@@ -35,11 +35,11 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES camera
-   CATKIN_DEPENDS glviewer rosinterface std_msgs message_runtime
+   CATKIN_DEPENDS glviewer rosinterface
 #  DEPENDS system_lib
 )
 
-set(CMAKE_CXX_FLAGS "-std=c++11 -O2 -Wall -g ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-std=c++11 -O2 -Wall -g -Wno-unused-result ${CMAKE_CXX_FLAGS}")
 
 EXECUTE_PROCESS(
   COMMAND pkg-config --variable=host_bins Qt5Core

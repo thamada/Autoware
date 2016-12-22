@@ -286,7 +286,6 @@ public:
 		//std::cout << "TRACKERS: " << obj_trackers_.size() << std::endl;
 
 		obj_detections_.clear();
-        ranges_.clear();
 
 		cv_tracker::image_obj_tracked tmp_objects_msg;
 
@@ -324,8 +323,7 @@ public:
 			tracked_type_ = image_objects_msg.type;
 			//points are X,Y,W,H and repeat for each instance
 			obj_detections_.clear();
-            ranges_.clear();
-            
+
 			for (unsigned int i=0; i<num;i++)
 			{
 				cv::Rect tmp;

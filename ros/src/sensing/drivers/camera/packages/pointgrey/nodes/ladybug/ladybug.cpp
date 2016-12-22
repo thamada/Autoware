@@ -33,7 +33,7 @@ float m_frameRate;
 bool m_isFrameRateAuto;
 unsigned int m_jpegQualityPercentage;
 
-ros::Publisher pub[LADYBUG_NUM_CAMERAS + 1];
+ros::Publisher pub[LADYBUG_NUM_CAMERAS];
 
 static void signalHandler(int)
 {

@@ -41,7 +41,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES camera_lidar3d
-   CATKIN_DEPENDS rosinterface calibration_camera_lidar message_runtime std_msgs sensor_msgs
+   CATKIN_DEPENDS rosinterface calibration_camera_lidar
 #  DEPENDS system_lib
 )
 
@@ -49,7 +49,7 @@ catkin_package(
 ## Build ##
 ###########
 
-SET(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall ${CMAKE_CXX_FLAGS}")
+SET(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall -Wno-unused-result ${CMAKE_CXX_FLAGS}")
 
 EXECUTE_PROCESS(
   COMMAND pkg-config --variable=host_bins Qt5Core
