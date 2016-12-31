@@ -1,3 +1,6 @@
+--
+-- Copyright (c) 2004 by Tsuyoshi Hamada, all rights reserved.
+--
 -- PGR ALLCORE
 -- by Tsuyoshi Hamada
 -- Last Modified at 2005/01/02

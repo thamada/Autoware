@@ -1,3 +1,7 @@
+--
+-- Copyright (c) 2004 by Tsuyoshi Hamada, all rights reserved.
+--
+
 -- for SPH SecondStage ( JDATA_WIDTH=512)
 library ieee;
 use ieee.std_logic_1164.all;

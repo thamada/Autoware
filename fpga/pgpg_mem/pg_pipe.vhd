@@ -1,4 +1,6 @@
--- PGR SOFTWARE LICENSE  ------------------------------------
+--
+-- Copyright (c) 2004 by Tsuyoshi Hamada, all rights reserved.
+--
 -- 2006-05-11    <hamada@progrape.jp>
 -------------------------------------------------------------
 

@@ -1,3 +1,6 @@
+--
+-- Copyright (c) 2004 by Tsuyoshi Hamada, all rights reserved.
+--
 -- Last Modifiled at 2004/12/27
 
 library ieee;

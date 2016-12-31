@@ -1,3 +1,6 @@
+--
+-- Copyright (c) 2004 by Tsuyoshi Hamada, all rights reserved.
+--
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;                                        
