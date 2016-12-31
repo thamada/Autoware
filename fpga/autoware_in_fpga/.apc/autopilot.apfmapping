@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="adr_dec.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/adr_dec.vhd"/>
+    <originFiles name="calc.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/calc.vhd"/>
+    <originFiles name="clk_muldiv.vhd" path="/home/hamada/git/Autoware/fpga/clk_muldiv.vhd"/>
+    <originFiles name="dmar.vhd" path="/home/hamada/git/Autoware/fpga/dmar.vhd"/>
+    <originFiles name="dmar_dbus_hiz.vhd" path="/home/hamada/git/Autoware/fpga/dmar_dbus_hiz.vhd"/>
+    <originFiles name="dmar_mem_adr.vhd" path="/home/hamada/git/Autoware/fpga/dmar_mem_adr.vhd"/>
+    <originFiles name="dmar_mem_re.vhd" path="/home/hamada/git/Autoware/fpga/dmar_mem_re.vhd"/>
+    <originFiles name="dmar_start_adr.vhd" path="/home/hamada/git/Autoware/fpga/dmar_start_adr.vhd"/>
+    <originFiles name="dmar_state.vhd" path="/home/hamada/git/Autoware/fpga/dmar_state.vhd"/>
+    <originFiles name="dmaw.vhd" path="/home/hamada/git/Autoware/fpga/dmaw.vhd"/>
+    <originFiles name="dmaw_mem_adr.vhd" path="/home/hamada/git/Autoware/fpga/dmaw_mem_adr.vhd"/>
+    <originFiles name="dmaw_mem_we.vhd" path="/home/hamada/git/Autoware/fpga/dmaw_mem_we.vhd"/>
+    <originFiles name="dmaw_start_adr.vhd" path="/home/hamada/git/Autoware/fpga/dmaw_start_adr.vhd"/>
+    <originFiles name="dmaw_state.vhd" path="/home/hamada/git/Autoware/fpga/dmaw_state.vhd"/>
+    <originFiles name="dpram.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/dpram.vhd"/>
+    <originFiles name="jmem.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/jmem.vhd"/>
+    <originFiles name="pg_module.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/pg_module.vhd"/>
+    <originFiles name="pg_pipe.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/pg_pipe.vhd"/>
+    <originFiles name="pgpg_mem.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/pgpg_mem.vhd"/>
+    <originFiles name="pipe_sts.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/pipe_sts.vhd"/>
+    <originFiles name="setn.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/setn.vhd"/>
+    <originFiles name="top.vhd" path="/home/hamada/git/Autoware/fpga/top.vhd"/>
+    <originFiles name="user.vhd" path="/home/hamada/git/Autoware/fpga/user.vhd"/>
+    <originFiles name="adr_dec.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/adr_dec.vhd"/>
+    <originFiles name="calc.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/calc.vhd"/>
+    <originFiles name="clk_muldiv.vhd" path="/home/hamada/git/Autoware/fpga/clk_muldiv.vhd"/>
+    <originFiles name="dmar.vhd" path="/home/hamada/git/Autoware/fpga/dmar.vhd"/>
+    <originFiles name="dmar_dbus_hiz.vhd" path="/home/hamada/git/Autoware/fpga/dmar_dbus_hiz.vhd"/>
+    <originFiles name="dmar_mem_adr.vhd" path="/home/hamada/git/Autoware/fpga/dmar_mem_adr.vhd"/>
+    <originFiles name="dmar_mem_re.vhd" path="/home/hamada/git/Autoware/fpga/dmar_mem_re.vhd"/>
+    <originFiles name="dmar_start_adr.vhd" path="/home/hamada/git/Autoware/fpga/dmar_start_adr.vhd"/>
+    <originFiles name="dmar_state.vhd" path="/home/hamada/git/Autoware/fpga/dmar_state.vhd"/>
+    <originFiles name="dmaw.vhd" path="/home/hamada/git/Autoware/fpga/dmaw.vhd"/>
+    <originFiles name="dmaw_mem_adr.vhd" path="/home/hamada/git/Autoware/fpga/dmaw_mem_adr.vhd"/>
+    <originFiles name="dmaw_mem_we.vhd" path="/home/hamada/git/Autoware/fpga/dmaw_mem_we.vhd"/>
+    <originFiles name="dmaw_start_adr.vhd" path="/home/hamada/git/Autoware/fpga/dmaw_start_adr.vhd"/>
+    <originFiles name="dmaw_state.vhd" path="/home/hamada/git/Autoware/fpga/dmaw_state.vhd"/>
+    <originFiles name="dpram.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/dpram.vhd"/>
+    <originFiles name="jmem.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/jmem.vhd"/>
+    <originFiles name="pg_module.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/pg_module.vhd"/>
+    <originFiles name="pg_pipe.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/pg_pipe.vhd"/>
+    <originFiles name="pgpg_mem.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/pgpg_mem.vhd"/>
+    <originFiles name="pipe_sts.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/pipe_sts.vhd"/>
+    <originFiles name="setn.vhd" path="/home/hamada/git/Autoware/fpga/pgpg_mem/setn.vhd"/>
+    <originFiles name="top.vhd" path="/home/hamada/git/Autoware/fpga/top.vhd"/>
+    <originFiles name="user.vhd" path="/home/hamada/git/Autoware/fpga/user.vhd"/>
+  </source>
+  <testbench/>
+</autopilotfilemapping:AutoPilotFileMapping>
