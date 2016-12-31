@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1733598 on Wed Dec 14 22:35:42 MST 2016
+# IP Build 1731160 on Wed Dec 14 23:47:21 MST 2016
+# Start of session at: Sat Dec 31 18:40:11 2016
+# Process ID: 9522
+# Current directory: /home/hamada/git/Autoware/fpga/proj/autoware_reconfacc/autoware_reconfacc.runs/synth_1
+# Command line: vivado -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: /home/hamada/git/Autoware/fpga/proj/autoware_reconfacc/autoware_reconfacc.runs/synth_1/top.vds
+# Journal file: /home/hamada/git/Autoware/fpga/proj/autoware_reconfacc/autoware_reconfacc.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source top.tcl -notrace
