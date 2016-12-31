@@ -1,5 +1,5 @@
 # Autoware in FPGAs
-Copyright (c) 2017 by Tsuyoshi Hamada, all rights reserved.
+Copyright (c) 2016-2017 by Tsuyoshi Hamada, all rights reserved.
  
 ## Devices:
 

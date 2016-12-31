@@ -2,7 +2,7 @@
 
 ## Copyright
 
-Copyright(c) 2016, Tsuyoshi Hamada, all rights reserved
+Copyright(c) 2004-2017, Tsuyoshi Hamada, all rights reserved
 
 ## License
 
