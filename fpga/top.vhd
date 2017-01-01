@@ -1,7 +1,5 @@
--- Time-stamp: "2017-01-01 01:07:11 hamada"
+-- Time-stamp: "2017-01-01 16:22:00 hamada"
 -- Copyright (c) Tsuyoshi Hamada, all rights reserved
---
--- Happy New Year 2017 !
 --
 --[WRITE]
 --clk         __~~ __~~ __~~ __~~ __~~ __~~ __~~ __~~ __~~ __~~ __~~ __~~ __~~ __~~ __
