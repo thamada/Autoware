@@ -1,4 +1,4 @@
--- Time-stamp: <2017-01-01 16:24:16 hamada>
+-- Time-stamp: <2017-01-01 16:29:40 hamada>
 --
 -- Copyright (c) 2016 by Tsuyoshi Hamada, all right reserved
 --
@@ -51,9 +51,26 @@ signal dout0: std_logic_VECTOR(31 downto 0);
 signal empty0: std_logic;
 signal full0: std_logic;
 
+signal x1_0, x1_1: std_logic;
+signal y1_0, y1_1: std_logic;
+signal x2_0, x2_1, x2_2: std_logic;
+signal y2_0, y2_1, y2_2: std_logic;
+
 begin  
 
 clk <= wbClk;
+
+process(clk) begin
+    if(clk'event and clk='1') then
+        x2_2 <= x2_1;
+        y2_2 <= y2_1;
+        x2_1 <= x2_0;
+        y2_1 <= y2_0;
+        x1_1 <= x1_0;
+        y1_1 <= y1_0;
+    end if;
+end process;
+
 
 --get the data back in sync with the enable
 process (wbClk)
