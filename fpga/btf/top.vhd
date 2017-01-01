@@ -1,4 +1,4 @@
--- Time-stamp: <2016-12-31 19:16:51 hamada>
+-- Time-stamp: <2017-01-01 16:24:16 hamada>
 --
 -- Copyright (c) 2016 by Tsuyoshi Hamada, all right reserved
 --
@@ -40,6 +40,7 @@ component btf
 end component;
 
 
+signal clk: std_logic;
 signal din0: std_logic_VECTOR(31 downto 0);
 signal rd_clk0: std_logic;
 signal rd_en0: std_logic;
@@ -52,6 +53,8 @@ signal full0: std_logic;
 
 begin  
 
+clk <= wbClk;
+
 --get the data back in sync with the enable
 process (wbClk)
  begin
@@ -60,9 +63,9 @@ process (wbClk)
 end process;
 
 --state machine to load data from the WB bus to the input fifos
-process (wbClk)	  
+process (clk)
 begin
-    if rising_edge(wbClk) then
+    if rising_edge(clk) then
 	 
         if (reset = '1') then
         readIngressFifo <='1';
@@ -75,6 +78,7 @@ begin
         end if;
     end if;
 end process;
+
 
 process (wbClk) 
 begin
