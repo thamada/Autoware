@@ -1,0 +1,15 @@
+#Time-stamp: <2017-01-02 23:35:27 hamada>
+
+#*.rpt
+htr.txt
+.Xil
+.vivado.*
+.Vivado*
+rundef.js
+runme.log
+runme.bat
+runme.sh
+top.vds
+top.dcp
+*.pb
+ISEWrap.*
