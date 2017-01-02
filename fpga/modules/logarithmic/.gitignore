@@ -1,21 +1,15 @@
-#Time-stamp: <2017-01-03 02:54:46 hamada>
+#Time-stamp: <2017-01-03 03:08:07 hamada>
 
 /xilinx/xilinx.cache
 /xilinx/xilinx.hw
 /xilinx/xilinx.ip_user_files
 /xilinx/xilinx.sim
+/xilinx/xilinx.runs/.jobs
 
-#/xilinx/xilinx.runs/.jobs
 .jobs*
-
-#/xilinx/xilinx.runs/synth_1/vivado.*
-#/xilinx/xilinx.runs/synth_1/.Vivado_Synthesis.queue.rst
-
 vivado*
 .Vivado*
 *.rst
-
-
 
 .Xil
 runme.*
@@ -43,7 +37,6 @@ htr.txt
 /xilinx/xilinx.runs/synth_1/runme.sh
 /xilinx/xilinx.runs/synth_1/top.dcp
 /xilinx/xilinx.runs/synth_1/top*vds
-/xilinx/xilinx.runs/synth_1/top_utilization_synth.rpt
 /xilinx/xilinx.runs/synth_1/vivado*jou
 /xilinx/xilinx.runs/synth_1/vivado.pb
 
@@ -68,3 +61,5 @@ htr.txt
 /xilinx/xilinx.runs/impl_1/vivado.pb
 /xilinx/xilinx.runs/impl_1/vivado*jou
 /xilinx/xilinx.runs/impl_1/write_bitstream.pb
+
+

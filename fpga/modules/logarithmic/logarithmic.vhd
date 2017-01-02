@@ -1,4 +1,4 @@
--- Time-stamp: <2017-01-03 01:50:02 hamada>
+-- Time-stamp: <2017-01-03 03:10:22 hamada>
 --
 -- Copyright(c) 2006-2017 by Tsuyoshi Hamada. All rights reserved 
 --
@@ -21,13 +21,13 @@ end pg_log_unsigned_add_itp_17_8_6_9;
 
 architecture rtl of pg_log_unsigned_add_itp_17_8_6_9 is
 
-  component pg_log_unsigned_add_umult_6_9_2
-  port (
+component pg_log_unsigned_add_umult_6_9_2
+port (
     clk : in std_logic; 
     x : in std_logic_vector(5 downto 0); 
     y : in std_logic_vector(8 downto 0); 
     z : out std_logic_vector(14 downto 0));
-  end component;
+end component;
 
 -- This part has a bug potentially.
 -- The MULTIPLE DECLARATION will be occure!!
@@ -35,69 +35,67 @@ architecture rtl of pg_log_unsigned_add_itp_17_8_6_9 is
 -- I will kill the bug for future.
 -- If your VHDL code bumps this MULTIPLE DECLARATION error at synthesis,
 -- Please contact me(hamada@provence.c.u-tokyo.ac.jp).
-  -- u1 --
-  component pg_adder_RCA_SUB_17_1
+-- u1 --
+component pg_adder_RCA_SUB_17_1
     port (x,y: in std_logic_vector(16 downto 0);
           clk: in std_logic;
           z: out std_logic_vector(16 downto 0));
-  end component;
+end component;
 
-  -- u2 --
-  component pg_adder_RCA_SUB_16_1
+-- u2 --
+component pg_adder_RCA_SUB_16_1
     port (x,y: in std_logic_vector(15 downto 0);
           clk: in std_logic;
           z: out std_logic_vector(15 downto 0));
-  end component;
+end component;
 
-  -- itp_sub --
-  component pg_adder_RCA_SUB_11_0
+-- itp_sub --
+component pg_adder_RCA_SUB_11_0
     port (x,y: in std_logic_vector(10 downto 0);
           clk: in std_logic;
           z: out std_logic_vector(10 downto 0));
-  end component;
+end component;
 
-  -- u4 --
-  component pg_adder_RCA_ADD_16_1
+-- u4 --
+component pg_adder_RCA_ADD_16_1
     port (x,y: in std_logic_vector(15 downto 0);
           clk: in std_logic;
           z: out std_logic_vector(15 downto 0));
-  end component;
+end component;
 
-  component lcell_rom_a106_6_10_1
+component lcell_rom_a106_6_10_1
    port (indata: in std_logic_vector(5 downto 0);
          clk: in std_logic;
          outdata: out std_logic_vector(9 downto 0));
-  end component;
+end component;
 
-  component lcell_rom_a906_6_9_1
-   port (indata: in std_logic_vector(5 downto 0);
-         clk: in std_logic;
-         outdata: out std_logic_vector(8 downto 0));
-  end component;
+component lcell_rom_a906_6_9_1
+    port (indata: in std_logic_vector(5 downto 0);
+          clk: in std_logic;
+          outdata: out std_logic_vector(8 downto 0));
+end component;
 
-
-  signal x1,y1,xy : std_logic_vector(16 downto 0);
-  signal yx : std_logic_vector(15 downto 0);
-  signal xd,yd : std_logic_vector(15 downto 0);
-  signal x2,x3,x4,x5,x6,x7,x8 : std_logic_vector(15 downto 0);
-  signal d0,d1,d4 : std_logic_vector(15 downto 0);
-  signal z0 : std_logic_vector(15 downto 0);
-  signal sign0,sign1,sign2,sign3,sign4,sign5,sign6,sign7,sign8 : std_logic;
-  signal signxy : std_logic_vector(1 downto 0);
-  -- FOR TABLE SUB LOGIC
-  signal df0,df1,df2,df3,df4,df5 : std_logic;
-  signal d_isz0,d_isz1,d_isz2,d_isz3,d_isz4,d_isz5 : std_logic;
-  signal d2 : std_logic_vector(8 downto 0);
-  signal itp_x : std_logic_vector(5 downto 0);
-  signal itp_dx0,itp_dx1 : std_logic_vector(5 downto 0);
-  signal itp_c0,itp_c0d0,itp_c0d1,itp_c0d2 : std_logic_vector(9 downto 0);
-  signal itp_c1 : std_logic_vector(8 downto 0);
-  signal itp_c1dx : std_logic_vector(14 downto 0);
-  signal itp_c1dx_shift : std_logic_vector(9 downto 0);
-  signal itp_c1dx2: std_logic_vector(9 downto 0);
-  signal itp_subx,itp_suby,itp_subz: std_logic_vector(10 downto 0);
-  signal itp_c0_c1dx: std_logic_vector(7 downto 0);
-  signal itp_out0,itp_out1: std_logic_vector(7 downto 0);
+signal x1,y1,xy : std_logic_vector(16 downto 0);
+signal yx : std_logic_vector(15 downto 0);
+signal xd,yd : std_logic_vector(15 downto 0);
+signal x2,x3,x4,x5,x6,x7,x8 : std_logic_vector(15 downto 0);
+signal d0,d1,d4 : std_logic_vector(15 downto 0);
+signal z0 : std_logic_vector(15 downto 0);
+signal sign0,sign1,sign2,sign3,sign4,sign5,sign6,sign7,sign8 : std_logic;
+signal signxy : std_logic_vector(1 downto 0);
+signal df0,df1,df2,df3,df4,df5 : std_logic;
+signal d_isz0,d_isz1,d_isz2,d_isz3,d_isz4,d_isz5 : std_logic;
+signal d2 : std_logic_vector(8 downto 0);
+signal itp_x : std_logic_vector(5 downto 0);
+signal itp_dx0,itp_dx1 : std_logic_vector(5 downto 0);
+signal itp_c0,itp_c0d0,itp_c0d1,itp_c0d2 : std_logic_vector(9 downto 0);
+signal itp_c1 : std_logic_vector(8 downto 0);
+signal itp_c1dx : std_logic_vector(14 downto 0);
+signal itp_c1dx_shift : std_logic_vector(9 downto 0);
+signal itp_c1dx2: std_logic_vector(9 downto 0);
+signal itp_subx,itp_suby,itp_subz: std_logic_vector(10 downto 0);
+signal itp_c0_c1dx: std_logic_vector(7 downto 0);
+signal itp_out0,itp_out1: std_logic_vector(7 downto 0);
 
 begin
 
