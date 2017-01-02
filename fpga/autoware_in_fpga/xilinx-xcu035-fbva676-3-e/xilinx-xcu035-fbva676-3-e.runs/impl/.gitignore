@@ -1,12 +1,18 @@
-# Time-stamp: <2017-01-02 23:12:37 hamada>
+# Time-stamp: <2017-01-03 00:41:30 hamada>
 
-*~
+*~ .*~
 *.pb
-*.rpt
-*.pb
-*.rpt
 *.jou
 *.rpx
 *.dcp
 *.vdi
-.*.rst .Xil
+.*.rst
+.Xil
+
+# *.rpt
+top_control_sets_placed.rpt
+top_drc_*.rpt
+top_methodology_drc_routed.rpt
+top_clock_utilization_routed.rpt
+top_io_placed.rpt
+top_route_status.rpt

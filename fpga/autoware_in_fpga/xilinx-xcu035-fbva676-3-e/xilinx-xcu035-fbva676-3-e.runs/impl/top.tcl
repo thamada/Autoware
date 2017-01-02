@@ -1,4 +1,4 @@
-#Time-stamp: <2017-01-02 23:13:56 hamada>
+#Time-stamp: <2017-01-03 00:19:57 hamada>
 #
 
 
@@ -59,7 +59,7 @@ set rc [catch {
   set_property parent.project_path /home/hamada/git/Autoware/fpga/autoware_in_fpga/xilinx-xcu035-fbva676-3-e/xilinx-xcu035-fbva676-3-e.xpr [current_project]
   set_property ip_output_repo /home/hamada/git/Autoware/fpga/autoware_in_fpga/xilinx-xcu035-fbva676-3-e/xilinx-xcu035-fbva676-3-e.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet /home/hamada/git/Autoware/fpga/autoware_in_fpga/xilinx-xcu035-fbva676-3-e/xilinx-xcu035-fbva676-3-e.runs/synth_1/top.dcp
+  add_files -quiet /home/hamada/git/Autoware/fpga/autoware_in_fpga/xilinx-xcu035-fbva676-3-e/xilinx-xcu035-fbva676-3-e.runs/synth/top.dcp
   link_design -top top -part xcku035-fbva676-3-e
   write_hwdef -file top.hwdef
   close_msg_db -file init_design.pb
