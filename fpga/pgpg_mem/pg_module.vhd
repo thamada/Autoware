@@ -1,6 +1,6 @@
--- PGR SOFTWARE LICENSE  ------------------------------------
+-- Copyright(c) 2006-2017 by Tsuyoshi Hamada. All rights reserved 
+-- 2017-01-02    <hamada@progrape.jp>
 -- 2006-05-11    <hamada@progrape.jp>
--- XXXXXXXXXXXXXXXXX. 
 -------------------------------------------------------------
 
 
@@ -93,6 +93,7 @@ begin
     end if;
   end process;
 end rtl;
+
 -- *************************************************************** 
 -- * PGPG FIXED-POINT TO LOGARITHMIC FORMAT CONVERTER            * 
 -- *  For Xilinx Devices                                         * 
@@ -425,14 +426,14 @@ begin
 
 end rtl;
 
--- ROM using Xilinx BlockRAM       
--- Author: Tsuyoshi Hamada         
--- Last Modified at Jun 2, 2004    
+-- ROM using Xilinx BlockRAM
+-- Author: Tsuyoshi Hamada
+-- Last Modified at Jun 2, 2004
 -- In 10 Out 8 Stage 1 Type"8408"
-library ieee;                      
-use ieee.std_logic_1164.all;       
-use ieee.std_logic_arith.all;      
-use ieee.std_logic_unsigned.all;   
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
 
 entity bram_rom_8408_10_8_1 is
   port( indata : in std_logic_vector(9 downto 0);
