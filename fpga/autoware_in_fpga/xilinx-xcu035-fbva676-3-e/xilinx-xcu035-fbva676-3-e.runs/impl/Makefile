@@ -1,4 +1,4 @@
-# Time-stamp: <2017-01-02 23:02:35 hamada>
+# Time-stamp: <2017-01-02 23:10:27 hamada>
 #
 # Copyright (c) 2017 Tsuyoshi Hamada. All Rights Reserved.
 #
@@ -11,5 +11,6 @@ all:
 
 
 clean:
-	rm -rf *.pb *.rpt *.jou *.rpx *.dcp *.vdi
+	rm -rf *.pb *.rpt *.jou *.rpx *.dcp *.vdi .*.rst .Xil
+
 
