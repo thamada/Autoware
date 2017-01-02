@@ -1,6 +1,6 @@
-# Time-stamp: <2017-01-02 23:29:59 hamada>
+# Time-stamp: <2017-01-02 23:41:09 hamada>
 #
-# Copyright (c) 2017 Tsuyoshi Hamada. All Rights Reserved.
+# Copyright(c) 2017 by Tsuyoshi Hamada. All Rights Reserved.
 #
 
 all:

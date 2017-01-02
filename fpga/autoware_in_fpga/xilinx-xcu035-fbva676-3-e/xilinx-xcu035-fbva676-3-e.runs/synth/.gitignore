@@ -1,4 +1,4 @@
-#Time-stamp: <2017-01-02 23:35:27 hamada>
+#Time-stamp: <2017-01-02 23:44:05 hamada>
 
 #*.rpt
 htr.txt
@@ -9,7 +9,9 @@ rundef.js
 runme.log
 runme.bat
 runme.sh
+top.jou
 top.vds
 top.dcp
 *.pb
+vivado.jou
 ISEWrap.*
