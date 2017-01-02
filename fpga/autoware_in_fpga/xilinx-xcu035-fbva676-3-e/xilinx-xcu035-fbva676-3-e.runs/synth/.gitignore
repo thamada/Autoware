@@ -1,4 +1,4 @@
-#Time-stamp: <2017-01-02 23:44:05 hamada>
+#Time-stamp: <2017-01-02 23:49:30 hamada>
 
 #*.rpt
 htr.txt
@@ -10,7 +10,7 @@ runme.log
 runme.bat
 runme.sh
 top.jou
-top.vds
+top*.vds
 top.dcp
 *.pb
 vivado.jou
