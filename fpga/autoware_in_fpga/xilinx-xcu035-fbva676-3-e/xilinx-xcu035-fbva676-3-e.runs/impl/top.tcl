@@ -1,3 +1,7 @@
+#Time-stamp: <2017-01-02 23:13:56 hamada>
+#
+
+
 proc start_step { step } {
   set stopFile ".stop.rst"
   if {[file isfile .stop.rst]} {
