@@ -1,4 +1,4 @@
--- Time-stamp: <2017-01-03 03:13:13 hamada>
+-- Time-stamp: <2017-01-03 20:22:01 hamada>
 --
 -- Copyright(c) 2006-2017 by Tsuyoshi Hamada. All rights reserved 
 --
@@ -10,304 +10,307 @@
 -- rom_c0(data)	10-bit
 -- rom_c1(data)	9-bit
 ---------------------------------------------------------------------
-library ieee;
-use ieee.std_logic_1164.all;
+library IEEE;
+use IEEE.std_logic_1164.all;
 
 entity pg_log_unsigned_add_itp_17_8_6_9 is
-  port( x,y : in std_logic_vector(16 downto 0);
-        z : out std_logic_vector(16 downto 0);
-        clock : in std_logic);
+    port(
+        x     : in std_logic_vector(16 downto 0);
+        y     : in std_logic_vector(16 downto 0);
+        z     : out std_logic_vector(16 downto 0);
+        clock : in std_logic
+    );
 end pg_log_unsigned_add_itp_17_8_6_9;
 
 architecture rtl of pg_log_unsigned_add_itp_17_8_6_9 is
 
-component pg_log_unsigned_add_umult_6_9_2
-port (
-    clk : in std_logic; 
-    x : in std_logic_vector(5 downto 0); 
-    y : in std_logic_vector(8 downto 0); 
-    z : out std_logic_vector(14 downto 0));
-end component;
+    component pg_log_unsigned_add_umult_6_9_2
+    port (
+        clk : in std_logic; 
+        x : in std_logic_vector(5 downto 0); 
+        y : in std_logic_vector(8 downto 0); 
+        z : out std_logic_vector(14 downto 0));
+    end component;
 
--- This part has a bug potentially.
--- The MULTIPLE DECLARATION will be occure!!
--- But I don't have time to fix it today. (2004/02/19)
--- I will kill the bug for future.
--- If your VHDL code bumps this MULTIPLE DECLARATION error at synthesis,
--- Please contact me(hamada@provence.c.u-tokyo.ac.jp).
--- u1 --
-component pg_adder_RCA_SUB_17_1
-    port (x,y: in std_logic_vector(16 downto 0);
-          clk: in std_logic;
-          z: out std_logic_vector(16 downto 0));
-end component;
+    -- This part has a bug potentially.
+    -- The MULTIPLE DECLARATION will be occure!!
+    -- But I don't have time to fix it today. (2004/02/19)
+    -- I will kill the bug for future.
+    -- If your VHDL code bumps this MULTIPLE DECLARATION error at synthesis,
+    -- Please contact me(hamada@provence.c.u-tokyo.ac.jp).
+    -- u1 --
+    component pg_adder_RCA_SUB_17_1
+        port (x,y: in std_logic_vector(16 downto 0);
+              clk: in std_logic;
+              z: out std_logic_vector(16 downto 0));
+    end component;
 
--- u2 --
-component pg_adder_RCA_SUB_16_1
-    port (x,y: in std_logic_vector(15 downto 0);
-          clk: in std_logic;
-          z: out std_logic_vector(15 downto 0));
-end component;
+    -- u2 --
+    component pg_adder_RCA_SUB_16_1
+        port (x,y: in std_logic_vector(15 downto 0);
+              clk: in std_logic;
+              z: out std_logic_vector(15 downto 0));
+    end component;
 
--- itp_sub --
-component pg_adder_RCA_SUB_11_0
-    port (x,y: in std_logic_vector(10 downto 0);
-          clk: in std_logic;
-          z: out std_logic_vector(10 downto 0));
-end component;
+    -- itp_sub --
+    component pg_adder_RCA_SUB_11_0
+        port (x,y: in std_logic_vector(10 downto 0);
+              clk: in std_logic;
+              z: out std_logic_vector(10 downto 0));
+    end component;
 
--- u4 --
-component pg_adder_RCA_ADD_16_1
-    port (x,y: in std_logic_vector(15 downto 0);
-          clk: in std_logic;
-          z: out std_logic_vector(15 downto 0));
-end component;
+    -- u4 --
+    component pg_adder_RCA_ADD_16_1
+        port (x,y: in std_logic_vector(15 downto 0);
+              clk: in std_logic;
+              z: out std_logic_vector(15 downto 0));
+    end component;
 
-component lcell_rom_a106_6_10_1
-   port (indata: in std_logic_vector(5 downto 0);
-         clk: in std_logic;
-         outdata: out std_logic_vector(9 downto 0));
-end component;
+    component lcell_rom_a106_6_10_1
+       port (indata: in std_logic_vector(5 downto 0);
+             clk: in std_logic;
+             outdata: out std_logic_vector(9 downto 0));
+    end component;
 
-component lcell_rom_a906_6_9_1
-    port (indata: in std_logic_vector(5 downto 0);
-          clk: in std_logic;
-          outdata: out std_logic_vector(8 downto 0));
-end component;
+    component lcell_rom_a906_6_9_1
+        port (indata: in std_logic_vector(5 downto 0);
+              clk: in std_logic;
+              outdata: out std_logic_vector(8 downto 0));
+    end component;
 
-signal x1,y1,xy : std_logic_vector(16 downto 0);
-signal yx : std_logic_vector(15 downto 0);
-signal xd,yd : std_logic_vector(15 downto 0);
-signal x2,x3,x4,x5,x6,x7,x8 : std_logic_vector(15 downto 0);
-signal d0,d1,d4 : std_logic_vector(15 downto 0);
-signal z0 : std_logic_vector(15 downto 0);
-signal sign0,sign1,sign2,sign3,sign4,sign5,sign6,sign7,sign8 : std_logic;
-signal signxy : std_logic_vector(1 downto 0);
-signal df0,df1,df2,df3,df4,df5 : std_logic;
-signal d_isz0,d_isz1,d_isz2,d_isz3,d_isz4,d_isz5 : std_logic;
-signal d2 : std_logic_vector(8 downto 0);
-signal itp_x : std_logic_vector(5 downto 0);
-signal itp_dx0,itp_dx1 : std_logic_vector(5 downto 0);
-signal itp_c0,itp_c0d0,itp_c0d1,itp_c0d2 : std_logic_vector(9 downto 0);
-signal itp_c1 : std_logic_vector(8 downto 0);
-signal itp_c1dx : std_logic_vector(14 downto 0);
-signal itp_c1dx_shift : std_logic_vector(9 downto 0);
-signal itp_c1dx2: std_logic_vector(9 downto 0);
-signal itp_subx,itp_suby,itp_subz: std_logic_vector(10 downto 0);
-signal itp_c0_c1dx: std_logic_vector(7 downto 0);
-signal itp_out0,itp_out1: std_logic_vector(7 downto 0);
+    signal x1,y1,xy : std_logic_vector(16 downto 0);
+    signal yx : std_logic_vector(15 downto 0);
+    signal xd,yd : std_logic_vector(15 downto 0);
+    signal x2,x3,x4,x5,x6,x7,x8 : std_logic_vector(15 downto 0);
+    signal d0,d1,d4 : std_logic_vector(15 downto 0);
+    signal z0 : std_logic_vector(15 downto 0);
+    signal sign0,sign1,sign2,sign3,sign4,sign5,sign6,sign7,sign8 : std_logic;
+    signal signxy : std_logic_vector(1 downto 0);
+    signal df0,df1,df2,df3,df4,df5 : std_logic;
+    signal d_isz0,d_isz1,d_isz2,d_isz3,d_isz4,d_isz5 : std_logic;
+    signal d2 : std_logic_vector(8 downto 0);
+    signal itp_x : std_logic_vector(5 downto 0);
+    signal itp_dx0,itp_dx1 : std_logic_vector(5 downto 0);
+    signal itp_c0,itp_c0d0,itp_c0d1,itp_c0d2 : std_logic_vector(9 downto 0);
+    signal itp_c1 : std_logic_vector(8 downto 0);
+    signal itp_c1dx : std_logic_vector(14 downto 0);
+    signal itp_c1dx_shift : std_logic_vector(9 downto 0);
+    signal itp_c1dx2: std_logic_vector(9 downto 0);
+    signal itp_subx,itp_suby,itp_subz: std_logic_vector(10 downto 0);
+    signal itp_c0_c1dx: std_logic_vector(7 downto 0);
+    signal itp_out0,itp_out1: std_logic_vector(7 downto 0);
 
 begin
 
-x1 <= '0' & x(15 downto 0);
-y1 <= '0' & y(15 downto 0);
+    x1 <= '0' & x(15 downto 0);
+    y1 <= '0' & y(15 downto 0);
 
---- PIPELINE 1 ---
-u1: pg_adder_RCA_SUB_17_1  port map(x=>x1,y=>y1,z=>xy,clk=>clock);
-u2: pg_adder_RCA_SUB_16_1  port map(x=>y(15 downto 0),y=>x(15 downto 0),z=>yx,clk=>clock);
-process(clock) begin
-  if(clock'event and clock='1') then
-    xd <= x(15 downto 0);
-    yd <= y(15 downto 0);
-    sign1 <= sign0;
-  end if;
-end process;
-------------------.
-
-
-x2 <= xd when xy(16)='0' else yd;
-d0 <= xy(15 downto 0) when xy(16)='0' else yx;
-
-signxy <= x(16)&y(16);
-with signxy select
-  sign0 <= y(16) when "01",
-           x(16) when others;
-
---- PIPELINE 2 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    x3 <= x2;
-    d1 <= d0;
-    sign2 <= sign1;
-  end if;
-end process;
-------------------.
+    --- PIPELINE 1 ---
+    u1: pg_adder_RCA_SUB_17_1  port map(x=>x1,y=>y1,z=>xy,clk=>clock);
+    u2: pg_adder_RCA_SUB_16_1  port map(x=>y(15 downto 0),y=>x(15 downto 0),z=>yx,clk=>clock);
+    process(clock) begin
+      if(clock'event and clock='1') then
+        xd <= x(15 downto 0);
+        yd <= y(15 downto 0);
+        sign1 <= sign0;
+      end if;
+    end process;
+    ------------------.
 
 
--- TABLE PART (START) ---------------------------------------------
--- INPUT  d1 : 16-bit
--- OUTPUT d4 : 16-bit
-df0 <= '1' when d1(15 downto 12)="0000" else '0';
+    x2 <= xd when xy(16)='0' else yd;
+    d0 <= xy(15 downto 0) when xy(16)='0' else yx;
 
--- ALL OR -> NOT (PLUS) --
-d_isz0 <= '1' when d1(11 downto 0)="000000000000" else '0';
+    signxy <= x(16)&y(16);
+    with signxy select
+      sign0 <= y(16) when "01",
+               x(16) when others;
 
--- TABLE (INTERPOLATION) --
--- *************************************************************** 
--- * PGPG UNSIGNED LOGARITHMIC ADDER MODULE OF                   * 
--- * INTERPORATED TABLE LOGIC : f(x+dx) ~= c0(x) + c1(x)dx       * 
--- *  c0(x) and c1(x) are chebyshev coefficients.                * 
--- *************************************************************** 
-itp_x   <= d1(11 downto 6);
-itp_dx0 <= d1(5 downto 0);
-
---- PIPELINE 3 ---
-
--- OUT REGISTERED TABLE --                          
--- c0(x) --                                         
-itp_c0_rom: lcell_rom_a106_6_10_1
-port map(indata=>itp_x,outdata=>itp_c0,clk=>clock);
-
--- c1(x) --                                         
-itp_c1_rom: lcell_rom_a906_6_9_1
-port map(indata=>itp_x,outdata=>itp_c1,clk=>clock);
-
-process(clock) begin
-  if(clock'event and clock='1') then
-    df1 <= df0;
-    d_isz1 <= d_isz0;
-    itp_dx1 <= itp_dx0;
-  end if;
-end process;
-------------------.
+    --- PIPELINE 2 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        x3 <= x2;
+        d1 <= d0;
+        sign2 <= sign1;
+      end if;
+    end process;
+    ------------------.
 
 
---- PIPELINE 4,5 ---
--- ITP MULT --  6-bit * 9-bit -> 15-bit
-itp_mult: pg_log_unsigned_add_umult_6_9_2
-  port map (       
-  clk  => clock,   
-  x  => itp_dx1,   
-  y  => itp_c1,    
-  z  => itp_c1dx); 
-------------------.
---- PIPELINE 4 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    df2 <= df1;
-    d_isz2 <= d_isz1;
-    itp_c0d0 <= itp_c0;
-  end if;
-end process;
-------------------.
---- PIPELINE 5 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    df3 <= df2;
-    d_isz3 <= d_isz2;
-    itp_c0d1 <= itp_c0d0;
-  end if;
-end process;
-------------------.
+    -- TABLE PART (START) ---------------------------------------------
+    -- INPUT  d1 : 16-bit
+    -- OUTPUT d4 : 16-bit
+    df0 <= '1' when d1(15 downto 12)="0000" else '0';
+
+    -- ALL OR -> NOT (PLUS) --
+    d_isz0 <= '1' when d1(11 downto 0)="000000000000" else '0';
+
+    -- TABLE (INTERPOLATION) --
+    -- *************************************************************** 
+    -- * PGPG UNSIGNED LOGARITHMIC ADDER MODULE OF                   * 
+    -- * INTERPORATED TABLE LOGIC : f(x+dx) ~= c0(x) + c1(x)dx       * 
+    -- *  c0(x) and c1(x) are chebyshev coefficients.                * 
+    -- *************************************************************** 
+    itp_x   <= d1(11 downto 6);
+    itp_dx0 <= d1(5 downto 0);
+
+    --- PIPELINE 3 ---
+
+    -- OUT REGISTERED TABLE --                          
+    -- c0(x) --                                         
+    itp_c0_rom: lcell_rom_a106_6_10_1
+    port map(indata=>itp_x,outdata=>itp_c0,clk=>clock);
+
+    -- c1(x) --                                         
+    itp_c1_rom: lcell_rom_a906_6_9_1
+    port map(indata=>itp_x,outdata=>itp_c1,clk=>clock);
+
+    process(clock) begin
+      if(clock'event and clock='1') then
+        df1 <= df0;
+        d_isz1 <= d_isz0;
+        itp_dx1 <= itp_dx0;
+      end if;
+    end process;
+    ------------------.
 
 
--- SHIFT >> 8-bit , JOINE ZERO-VECTORS TO THE UPPER-BIT
-itp_c1dx_shift <= "000" & itp_c1dx(14 downto 8);
-
---- PIPELINE 6 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    df4 <= df3;
-    d_isz4 <= d_isz3;
-    itp_c0d2 <= itp_c0d1;
-    itp_c1dx2 <= itp_c1dx_shift;
-  end if;
-end process;
-------------------.
-
-
-itp_subx <= '0' & itp_c0d2;
-itp_suby <= '0' & itp_c1dx2;
-itp_sub: pg_adder_RCA_SUB_11_0  port map(x=>itp_subx,y=>itp_suby,z=>itp_subz,clk=>clock);
-
--- IF [f(x+dx)=c0(x)-c1(x)dx<0] THEN [f(x+dx) := 0] ELSE SHIFT >> 2-bit
-itp_c0_c1dx <= "00000000" when (itp_subz(10)='1') else itp_subz(9 downto 2);
-
-
-itp_out0 <= itp_c0_c1dx when (d_isz4='0') else "00000000";
-
-
---- PIPELINE 7 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    df5 <= df4;
-    d_isz5 <= d_isz4;
-    itp_out1 <= itp_out0;
-  end if;
-end process;
-------------------.
-
-d2(8) <= d_isz5;
-d2(7 downto 0) <= itp_out1;
-d4(8 downto 0) <= d2 when (df5 = '1') else "000000000";
-d4(15 downto 9) <= "0000000";
-
--- TABLE PART (END) ---------------------------------------------
+    --- PIPELINE 4,5 ---
+    -- ITP MULT --  6-bit * 9-bit -> 15-bit
+    itp_mult: pg_log_unsigned_add_umult_6_9_2
+      port map (       
+      clk  => clock,   
+      x  => itp_dx1,   
+      y  => itp_c1,    
+      z  => itp_c1dx); 
+    ------------------.
+    --- PIPELINE 4 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        df2 <= df1;
+        d_isz2 <= d_isz1;
+        itp_c0d0 <= itp_c0;
+      end if;
+    end process;
+    ------------------.
+    --- PIPELINE 5 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        df3 <= df2;
+        d_isz3 <= d_isz2;
+        itp_c0d1 <= itp_c0d0;
+      end if;
+    end process;
+    ------------------.
 
 
---- PIPELINE 3 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    x4 <= x3;
-    sign3 <= sign2;
-  end if;
-end process;
-------------------.
+    -- SHIFT >> 8-bit , JOINE ZERO-VECTORS TO THE UPPER-BIT
+    itp_c1dx_shift <= "000" & itp_c1dx(14 downto 8);
 
---- PIPELINE 4 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    x5 <= x4;
-    sign4 <= sign3;
-  end if;
-end process;
-------------------.
+    --- PIPELINE 6 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        df4 <= df3;
+        d_isz4 <= d_isz3;
+        itp_c0d2 <= itp_c0d1;
+        itp_c1dx2 <= itp_c1dx_shift;
+      end if;
+    end process;
+    ------------------.
 
---- PIPELINE 5 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    x6 <= x5;
-    sign5 <= sign4;
-  end if;
-end process;
-------------------.
 
---- PIPELINE 6 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    x7 <= x6;
-    sign6 <= sign5;
-  end if;
-end process;
-------------------.
+    itp_subx <= '0' & itp_c0d2;
+    itp_suby <= '0' & itp_c1dx2;
+    itp_sub: pg_adder_RCA_SUB_11_0  port map(x=>itp_subx,y=>itp_suby,z=>itp_subz,clk=>clock);
 
---- PIPELINE 7 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    x8 <= x7;
-    sign7 <= sign6;
-  end if;
-end process;
-------------------.
+    -- IF [f(x+dx)=c0(x)-c1(x)dx<0] THEN [f(x+dx) := 0] ELSE SHIFT >> 2-bit
+    itp_c0_c1dx <= "00000000" when (itp_subz(10)='1') else itp_subz(9 downto 2);
 
---- PIPELINE 8 ---
-u4: pg_adder_RCA_ADD_16_1  port map(x=>x8,y=>d4,z=>z0,clk=>clock);
 
-process(clock) begin
-  if(clock'event and clock='1') then
-    sign8 <= sign7;
-  end if;
-end process;
-------------------.
+    itp_out0 <= itp_c0_c1dx when (d_isz4='0') else "00000000";
 
---- PIPELINE 9 ---
-process(clock) begin
-  if(clock'event and clock='1') then
-    z(15 downto 0) <= z0;
-    z(16) <= sign8;
-  end if;
-end process;
-------------------.
+
+    --- PIPELINE 7 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        df5 <= df4;
+        d_isz5 <= d_isz4;
+        itp_out1 <= itp_out0;
+      end if;
+    end process;
+    ------------------.
+
+    d2(8) <= d_isz5;
+    d2(7 downto 0) <= itp_out1;
+    d4(8 downto 0) <= d2 when (df5 = '1') else "000000000";
+    d4(15 downto 9) <= "0000000";
+
+    -- TABLE PART (END) ---------------------------------------------
+
+
+    --- PIPELINE 3 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        x4 <= x3;
+        sign3 <= sign2;
+      end if;
+    end process;
+    ------------------.
+
+    --- PIPELINE 4 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        x5 <= x4;
+        sign4 <= sign3;
+      end if;
+    end process;
+    ------------------.
+
+    --- PIPELINE 5 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        x6 <= x5;
+        sign5 <= sign4;
+      end if;
+    end process;
+    ------------------.
+
+    --- PIPELINE 6 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        x7 <= x6;
+        sign6 <= sign5;
+      end if;
+    end process;
+    ------------------.
+
+    --- PIPELINE 7 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        x8 <= x7;
+        sign7 <= sign6;
+      end if;
+    end process;
+    ------------------.
+
+    --- PIPELINE 8 ---
+    u4: pg_adder_RCA_ADD_16_1  port map(x=>x8,y=>d4,z=>z0,clk=>clock);
+
+    process(clock) begin
+      if(clock'event and clock='1') then
+        sign8 <= sign7;
+      end if;
+    end process;
+    ------------------.
+
+    --- PIPELINE 9 ---
+    process(clock) begin
+      if(clock'event and clock='1') then
+        z(15 downto 0) <= z0;
+        z(16) <= sign8;
+      end if;
+    end process;
+    ------------------.
 
 end rtl;
 -- ============= END  pg_log_unsigned_add interporation version    
@@ -916,33 +919,40 @@ USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 LIBRARY UNISIM;
 USE UNISIM.Vcomponents.ALL;
+
 entity pg_lcell is
-  generic(MASK: bit_vector  := X"ffff";
-            FF: integer := 0);
-    port(x : in std_logic_vector(3 downto 0);
-         z : out std_logic;
-         clk : in std_logic);
+    generic (
+        MASK : bit_vector  := X"ffff";
+        FF   : integer := 0
+    );
+    port (
+        x    : in std_logic_vector(3 downto 0);
+        z    : out std_logic;
+        clk  : in std_logic
+    );
 end pg_lcell;
 
 architecture schematic of pg_lcell is
-   ATTRIBUTE BOX_TYPE : STRING;
-   ATTRIBUTE INIT : STRING ;
-   COMPONENT LUT4
-   GENERIC( INIT : BIT_VECTOR := X"0000");
-      PORT ( I0	:	IN	STD_LOGIC;
-             I1	:	IN	STD_LOGIC;
-             I2	:	IN	STD_LOGIC;
-             I3	:	IN	STD_LOGIC;
-             O	:	OUT	STD_LOGIC);
-   END COMPONENT;
-   ATTRIBUTE BOX_TYPE OF LUT4 : COMPONENT IS "BLACK_BOX";
 
-   signal z0 : std_logic;
+    ATTRIBUTE BOX_TYPE : STRING;
+    ATTRIBUTE INIT : STRING ;
 
-BEGIN
+    component LUT4
+    generic( INIT : BIT_VECTOR := X"0000");
+       port ( I0	:	IN	STD_LOGIC;
+              I1	:	IN	STD_LOGIC;
+              I2	:	IN	STD_LOGIC;
+              I3	:	IN	STD_LOGIC;
+              O	:	OUT	STD_LOGIC);
+    end component;
+    ATTRIBUTE BOX_TYPE OF LUT4 : COMPONENT IS "BLACK_BOX";
 
-   xlcell : LUT4 GENERIC MAP (INIT => MASK)
-      PORT MAP (I0=>x(0), I1=>x(1), I2=>x(2), I3=>x(3), O=>z0);
+    signal z0 : std_logic;
+
+begin
+
+   xlcell : LUT4 generic map (INIT => MASK)
+      port map (I0=>x(0), I1=>x(1), I2=>x(2), I3=>x(3), O=>z0);
 
 -- unreged output
 ifgen0: if (FF=0) generate
