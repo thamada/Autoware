@@ -1,2 +1,6 @@
+#Time-stamp: <2017-01-05 07:08:39 hamada>
+
 /.Xil
 /vivado*
+/*.log
+
