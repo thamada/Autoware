@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-05 06:51:59 hamada>
+Time-stamp: <2017-01-05 07:02:34 hamada>
 
 # An OpenCL-enebled GPU customized for Autoware
 
@@ -32,4 +32,5 @@ Autoware for FPGAs project.
 
 ## GPU Architecture
 - 64 computing cores for handling OpenCL threads
-- Each core has floag-add, float-sub, float-mul and float-div unit.
+- Each core has float-add, float-sub, float-mul and float-div unit.
+- All floating-point arithmetic units conform to the IEEE 754 single precision storage format.
