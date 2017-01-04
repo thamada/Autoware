@@ -1,5 +1,5 @@
 -- ==============================================================
--- Time-stamp: <2017-01-04 22:09:22 hamada>
+-- Time-stamp: <2017-01-05 04:29:58 hamada>
 -- Copyright (C) 2017 Tsuyoshi Hamada. All Rights Reserved.
 --
 -- Autoware for FPGAs project.
@@ -14,10 +14,10 @@ use ieee.std_logic_unsigned.all;
 
 entity gpu_x0_ram is 
     generic(
-            mem_type    : string := "distributed"; 
+            mem_type    : string := "block"; 
             dwidth     : integer := 32; 
-            awidth     : integer := 4; 
-            mem_size    : integer := 16
+            awidth     : integer := 6; 
+            mem_size    : integer := 64
     ); 
     port (
           addr0     : in std_logic_vector(awidth-1 downto 0); 
@@ -37,7 +37,7 @@ type mem_array is array (0 to mem_size-1) of std_logic_vector (dwidth-1 downto 0
 shared variable ram : mem_array := (others=>(others=>'0'));
 
 attribute syn_ramstyle : string; 
-attribute syn_ramstyle of ram : variable is "select_ram";
+attribute syn_ramstyle of ram : variable is "block_ram";
 attribute ram_style : string;
 attribute ram_style of ram : variable is mem_type;
 attribute EQUIVALENT_REGISTER_REMOVAL : string;
@@ -79,8 +79,8 @@ use IEEE.std_logic_1164.all;
 entity gpu_x0 is
     generic (
         DataWidth : INTEGER := 32;
-        AddressRange : INTEGER := 16;
-        AddressWidth : INTEGER := 4);
+        AddressRange : INTEGER := 64;
+        AddressWidth : INTEGER := 6);
     port (
         reset : IN STD_LOGIC;
         clk : IN STD_LOGIC;

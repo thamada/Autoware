@@ -1,5 +1,5 @@
 -- ==============================================================
--- Time-stamp: <2017-01-05 00:13:48 hamada>
+-- Time-stamp: <2017-01-05 04:32:47 hamada>
 -- Copyright (C) 2017 Tsuyoshi Hamada. All Rights Reserved.
 --
 -- Autoware for FPGAs project.
@@ -15,7 +15,7 @@ use ieee.std_logic_1164.all;
 
 entity gpu_fdiv_32ns_32neOg is
     generic (
-        ID         : integer := 4;
+        ID         : integer := 5;
         NUM_STAGE  : integer := 9;
         din0_WIDTH : integer := 32;
         din1_WIDTH : integer := 32;

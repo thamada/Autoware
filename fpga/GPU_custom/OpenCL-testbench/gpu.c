@@ -1,4 +1,4 @@
-#Time-stamp: <2017-01-05 02:40:33 hamada>
+#Time-stamp: <2017-01-05 04:26:26 hamada>
 
 /* Provide Declarations */
 #include <stdarg.h>
@@ -174,15 +174,15 @@ static const  char aesl_internal_meta[1];
 static const  char aesl_internal_instance[1];
 static const  char aesl_internal_meta9[1];
 static const  char aesl_internal_instance10[1];
-static float aesl_internal_gpu_OC_x2[16];
+static float aesl_internal_gpu_OC_x2[64];
 signed int (*__spir_rt_info_OC_1)[3];
 signed int (*__spir_rt_info_OC_2)[3];
-static float aesl_internal_gpu_OC_y2[16];
-static float aesl_internal_gpu_OC_x0[16];
-static float aesl_internal_gpu_OC_y0[16];
+static float aesl_internal_gpu_OC_y2[64];
+static float aesl_internal_gpu_OC_x0[64];
+static float aesl_internal_gpu_OC_y0[64];
 static  char *aesl_internal_rt_info_OC_8;
-static float aesl_internal_gpu_OC_x1[16];
-static float aesl_internal_gpu_OC_y1[16];
+static float aesl_internal_gpu_OC_x1[64];
+static float aesl_internal_gpu_OC_y1[64];
 static const  char aesl_internal_XCL_WG_DIM_X_OC_str[13] = "XCL_WG_DIM_X";
 static const  char aesl_internal_str[1];
 signed int *__spir_rt_info_OC_0;
@@ -583,7 +583,7 @@ void gpu(signed int *gmem, signed int *group_id_2e_x, signed int *group_id_2e_y,
 #ifdef AESL_BC_SIM
  % 3
 #endif
-])) = 16u;
+])) = 64u;
   *((&aesl_internal_rt_info_OC_3[(((signed int )1u))
 #ifdef AESL_BC_SIM
  % 3
@@ -1118,10 +1118,10 @@ void gpu(signed int *gmem, signed int *group_id_2e_x, signed int *group_id_2e_y,
   *llvm_cbe_tid52_2e_i_2e_i = 0u;
   _ssdm_xcl_PointerMap((signed int *)llvm_cbe_arg_x_2e_i_2e_0, (signed int *)llvm_cbe_arg_x_2e_i_2e_0, 0u, 4u);
   llvm_cbe_CI_2e_i_2e_i = ( char *)(( char *)llvm_cbe_arg_x_2e_i_2e_0);
-  ( char *)memcpy(( char *)(( char *)(&aesl_internal_gpu_OC_x0)), ( char *)llvm_cbe_CI_2e_i_2e_i, 64u);
+  ( char *)memcpy(( char *)(( char *)(&aesl_internal_gpu_OC_x0)), ( char *)llvm_cbe_CI_2e_i_2e_i, 256u);
   _ssdm_xcl_PointerMap((signed int *)llvm_cbe_arg_y_2e_i_2e_0, (signed int *)llvm_cbe_arg_y_2e_i_2e_0, 0u, 4u);
   llvm_cbe_CI30_2e_i_2e_i = ( char *)(( char *)llvm_cbe_arg_y_2e_i_2e_0);
-  ( char *)memcpy(( char *)(( char *)(&aesl_internal_gpu_OC_y0)), ( char *)llvm_cbe_CI30_2e_i_2e_i, 64u);
+  ( char *)memcpy(( char *)(( char *)(&aesl_internal_gpu_OC_y0)), ( char *)llvm_cbe_CI30_2e_i_2e_i, 256u);
   llvm_cbe_indvar_2e_reg2mem62_2e_0_2e_i_2e_i__PHI_TEMPORARY = (unsigned int )0u;   /* for PHI node */
   goto llvm_cbe_for_2e_header_2e_i_2e_i;
 
@@ -1134,7 +1134,7 @@ llvm_cbe_for_2e_header_2e_i_2e_i:
 
 #endif
   *llvm_cbe_tid4965_2e_sub_2e_i_2e_i = llvm_cbe_indvar_2e_reg2mem62_2e_0_2e_i_2e_i;
-  if (((llvm_cbe_indvar_2e_reg2mem62_2e_0_2e_i_2e_i&4294967295U) == (16u&4294967295U))) {
+  if (((llvm_cbe_indvar_2e_reg2mem62_2e_0_2e_i_2e_i&4294967295U) == (64u&4294967295U))) {
     goto llvm_cbe___AESL_call_work_item_NA6_2e_exit;
   } else {
     goto llvm_cbe__Z21async_work_grou24_2e_rentry_2e_i_2e_i;
@@ -1143,23 +1143,23 @@ llvm_cbe_for_2e_header_2e_i_2e_i:
 llvm_cbe__Z21async_work_grou25_2e_i_2e_i:
   llvm_cbe_tmp__113 = (float *)(&aesl_internal_gpu_OC_x2[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x2' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x2' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__114 = (float )*llvm_cbe_tmp__113;
   llvm_cbe_tmp__115 = (float *)(&aesl_internal_gpu_OC_y2[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.y2' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.y2' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__116 = (float )*llvm_cbe_tmp__115;
@@ -1195,114 +1195,114 @@ llvm_cbe__Z21async_work_grou24_2e_rentry_2e_i_2e_i:
   llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i = (unsigned int )((unsigned int )(llvm_cbe_tid_2e_dim_2e_i_2e_i&4294967295ull)) + ((unsigned int )(llvm_cbe_tmp__81&4294967295ull));
   llvm_cbe_tmp__82 = (float *)(&aesl_internal_gpu_OC_x0[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x0' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x0' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__83 = (float )*llvm_cbe_tmp__82;
   llvm_cbe_tmp__84 = (float *)(&aesl_internal_gpu_OC_y0[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.y0' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.y0' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__85 = (float )*llvm_cbe_tmp__84;
   llvm_cbe_tmp__86 = (float )((float )(llvm_cbe_tmp__83 + llvm_cbe_tmp__85));
   llvm_cbe_tmp__87 = (float *)(&aesl_internal_gpu_OC_x1[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  assert(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16 && "Write access out of array 'aesl_internal_gpu.x1' bound?");
+  assert(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64 && "Write access out of array 'aesl_internal_gpu.x1' bound?");
 
 #endif
   *llvm_cbe_tmp__87 = llvm_cbe_tmp__86;
   llvm_cbe_tmp__88 = (float *)(&aesl_internal_gpu_OC_x0[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x0' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x0' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__89 = (float )*llvm_cbe_tmp__88;
   llvm_cbe_tmp__90 = (float *)(&aesl_internal_gpu_OC_y0[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.y0' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.y0' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__91 = (float )*llvm_cbe_tmp__90;
   llvm_cbe_tmp__92 = (float )((float )(llvm_cbe_tmp__89 - llvm_cbe_tmp__91));
   llvm_cbe_tmp__93 = (float *)(&aesl_internal_gpu_OC_y1[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  assert(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16 && "Write access out of array 'aesl_internal_gpu.y1' bound?");
+  assert(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64 && "Write access out of array 'aesl_internal_gpu.y1' bound?");
 
 #endif
   *llvm_cbe_tmp__93 = llvm_cbe_tmp__92;
   llvm_cbe_tmp__94 = (float *)(&aesl_internal_gpu_OC_x1[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x1' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x1' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__95 = (float )*llvm_cbe_tmp__94;
   llvm_cbe_tmp__96 = (float )((float )(llvm_cbe_tmp__95 * llvm_cbe_tmp__92));
   llvm_cbe_tmp__97 = (float *)(&aesl_internal_gpu_OC_x2[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  assert(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16 && "Write access out of array 'aesl_internal_gpu.x2' bound?");
+  assert(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64 && "Write access out of array 'aesl_internal_gpu.x2' bound?");
 
 #endif
   *llvm_cbe_tmp__97 = llvm_cbe_tmp__96;
   llvm_cbe_tmp__98 = (float *)(&aesl_internal_gpu_OC_x0[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x0' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x0' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__99 = (float )*llvm_cbe_tmp__98;
   llvm_cbe_tmp__100 = (float *)(&aesl_internal_gpu_OC_y1[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.y1' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.y1' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__101 = (float )*llvm_cbe_tmp__100;
@@ -1310,23 +1310,23 @@ llvm_cbe__Z21async_work_grou24_2e_rentry_2e_i_2e_i:
   llvm_cbe_tmp__103 = (float )((float )(llvm_cbe_tmp__99 / llvm_cbe_tmp__102));
   llvm_cbe_tmp__104 = (float *)(&aesl_internal_gpu_OC_y2[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  assert(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16 && "Write access out of array 'aesl_internal_gpu.y2' bound?");
+  assert(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64 && "Write access out of array 'aesl_internal_gpu.y2' bound?");
 
 #endif
   *llvm_cbe_tmp__104 = llvm_cbe_tmp__103;
   llvm_cbe_tmp__105 = (float *)(&aesl_internal_gpu_OC_x2[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x2' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x2' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__106 = (float )*llvm_cbe_tmp__105;
@@ -1343,24 +1343,24 @@ llvm_cbe__Z21async_work_grou24_2e_rentry_2e_i_2e_i:
 llvm_cbe_tmp__120:
   llvm_cbe_tmp__109 = (float *)(&aesl_internal_gpu_OC_x2[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x2' bound?\n", __FILE__, __LINE__);
+  if (!(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x2' bound?\n", __FILE__, __LINE__);
 
 #endif
   llvm_cbe_tmp__110 = (float )*llvm_cbe_tmp__109;
   llvm_cbe_tmp__111 = (float )((float )(llvm_cbe_tmp__110 * 0x1.e848p19));
   llvm_cbe_tmp__112 = (float *)(&aesl_internal_gpu_OC_x2[(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i))
 #ifdef AESL_BC_SIM
- % 16
+ % 64
 #endif
 ]);
 
 #ifdef AESL_BC_SIM
-  assert(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 16 && "Write access out of array 'aesl_internal_gpu.x2' bound?");
+  assert(((signed int )llvm_cbe_idx_2e_0_2e_reg2mem_2e_0_2e_i_2e_i) < 64 && "Write access out of array 'aesl_internal_gpu.x2' bound?");
 
 #endif
   *llvm_cbe_tmp__112 = llvm_cbe_tmp__111;
