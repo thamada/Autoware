@@ -1,4 +1,4 @@
-//Time-stamp: <2017-01-05 02:01:19 hamada>
+//Time-stamp: <2017-01-05 02:41:18 hamada>
 //
 // Autoware for FPGAs project.
 // 
@@ -23,6 +23,7 @@ gpu(__global float* x,     __global float* y,     __global float* z)
 
     __attribute__((xcl_pipeline_workitems)) 
     {
+        float rel = 0.0f;
         async_work_group_copy(x0, x, LENGTH, 0);
         async_work_group_copy(y0, y, LENGTH, 0);
         
@@ -36,6 +37,14 @@ gpu(__global float* x,     __global float* y,     __global float* z)
         x2[idx] = x1[idx] * y1[idx];
         y2[idx] = x0[idx] / (y1[idx]+3.1415f);
 
+        rel = y2[idx] / (x2[idx]+1.0e-23f);
+        rel = rel * rel;
+
+        if( (0.1f < rel) && (rel < 10.0f) ){
+            x2[idx] = x2[idx] * 1.0e6f;
+        } 
+
         z[idx] = x2[idx] + y2[idx];
+
     }
 }
