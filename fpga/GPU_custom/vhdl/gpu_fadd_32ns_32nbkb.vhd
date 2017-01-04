@@ -1,11 +1,13 @@
 -- ==============================================================
--- Time-stamp: <2017-01-04 22:09:06 hamada>
+-- Time-stamp: <2017-01-05 00:17:30 hamada>
 -- Copyright (C) 2017 Tsuyoshi Hamada. All Rights Reserved.
 --
 -- Autoware for FPGAs project.
 -- 
 -- --------------------------------------------------------------
 -- RTL design for my OpenCL-enebled custom GPU
+--   : floating-point adder conforming 
+--   :     to the IEEE 754 single precision storage format.
 -- ==============================================================
 
 Library ieee;

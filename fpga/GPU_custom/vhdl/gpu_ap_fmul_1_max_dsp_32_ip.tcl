@@ -1,12 +1,12 @@
 -- ==============================================================
--- Time-stamp: <2017-01-05 00:17:55 hamada>
+-- Time-stamp: <2017-01-05 00:18:50 hamada>
 -- Copyright (C) 2017 Tsuyoshi Hamada. All Rights Reserved.
 --
 -- Autoware for FPGAs project.
 -- 
 -- --------------------------------------------------------------
 -- RTL design for my OpenCL-enebled custom GPU
---   : floating-point adder conforming 
+--   : floating-point multiplier conforming 
 --   :     to the IEEE 754 single precision storage format.
 -- ==============================================================
 
@@ -16,12 +16,12 @@ set fpo_ver 7.1
 if {[regexp -nocase {2015\.1.*} $vivado_ver match]} {
     set fpo_ver 7.0
 }
-create_ip -name floating_point -version $fpo_ver -vendor xilinx.com -library ip -module_name gpu_ap_fadd_2_full_dsp_32
+create_ip -name floating_point -version $fpo_ver -vendor xilinx.com -library ip -module_name gpu_ap_fmul_1_max_dsp_32
 # BEGIN Vivado Commands 
 # BEGIN Vivado Parameters
 set_property -dict [list CONFIG.a_precision_type Single \
                           CONFIG.a_tuser_width 1 \
-                          CONFIG.add_sub_value Add \
+                          CONFIG.add_sub_value Both \
                           CONFIG.b_tuser_width 1 \
                           CONFIG.c_a_exponent_width 8 \
                           CONFIG.c_a_fraction_width 24 \
@@ -30,13 +30,13 @@ set_property -dict [list CONFIG.a_precision_type Single \
                           CONFIG.c_has_invalid_op false \
                           CONFIG.c_has_overflow false \
                           CONFIG.c_has_underflow false \
-                          CONFIG.c_latency 2 \
-                          CONFIG.c_mult_usage Full_Usage \
+                          CONFIG.c_latency 1 \
+                          CONFIG.c_mult_usage Max_Usage \
                           CONFIG.c_optimization Speed_Optimized \
                           CONFIG.c_rate 1 \
                           CONFIG.c_result_exponent_width 8 \
                           CONFIG.c_result_fraction_width 24 \
-                          CONFIG.component_name gpu_ap_fadd_2_full_dsp_32 \
+                          CONFIG.component_name gpu_ap_fmul_1_max_dsp_32 \
                           CONFIG.flow_control NonBlocking \
                           CONFIG.has_a_tlast false \
                           CONFIG.has_a_tuser false \
@@ -49,9 +49,9 @@ set_property -dict [list CONFIG.a_precision_type Single \
                           CONFIG.has_result_tready false \
                           CONFIG.maximum_latency false \
                           CONFIG.operation_tuser_width 1 \
-                          CONFIG.operation_type Add_Subtract \
+                          CONFIG.operation_type Multiply \
                           CONFIG.result_precision_type Single \
-                          CONFIG.result_tlast_behv Null] -objects [get_ips gpu_ap_fadd_2_full_dsp_32] -quiet
+                          CONFIG.result_tlast_behv Null] -objects [get_ips gpu_ap_fmul_1_max_dsp_32] -quiet
 # END Vivado Parameters
-set_property generate_synth_checkpoint false [get_files gpu_ap_fadd_2_full_dsp_32.xci]
-generate_target {synthesis simulation} [get_files gpu_ap_fadd_2_full_dsp_32.xci]
+set_property generate_synth_checkpoint false [get_files gpu_ap_fmul_1_max_dsp_32.xci]
+generate_target {synthesis simulation} [get_files gpu_ap_fmul_1_max_dsp_32.xci]

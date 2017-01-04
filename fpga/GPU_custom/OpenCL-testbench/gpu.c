@@ -1,3 +1,5 @@
+#Time-stamp: <2017-01-05 00:22:16 hamada>
+
 /* Provide Declarations */
 #include <stdarg.h>
 #include <setjmp.h>
@@ -168,40 +170,47 @@ void _OC_gpu8(signed int *, l_struct_OC_three_tuple_t *, l_struct_OC_three_tuple
 
 
 /* Global Variable Definitions and Initialization */
-static const  char aesl_internal__OC_str4[12] = "member_name";
+static float aesl_internal_gpu_OC_y1[16];
+static float aesl_internal_gpu_OC_x2[16];
+signed int (*__spir_rt_info_OC_1)[3];
+static float aesl_internal_gpu_OC_x0[16];
+static  char *aesl_internal_rt_info_OC_8;
+static float aesl_internal_gpu_OC_y0[16];
+static float aesl_internal_gpu_OC_x1[16];
+static const  char aesl_internal_meta[1];
+static const  char aesl_internal_instance[1];
+static const  char aesl_internal_meta9[1];
+static const  char aesl_internal_instance10[1];
+signed int (*__spir_rt_info_OC_2)[3];
+static float aesl_internal_gpu_OC_y2[16];
+static const  char aesl_internal_XCL_WG_DIM_X_OC_str[13] = "XCL_WG_DIM_X";
 static const  char aesl_internal_str[1];
 signed int *__spir_rt_info_OC_0;
-static float aesl_internal_gpu_OC_x0[16];
-static unsigned long long aesl_internal_rt_info_OC_12;
-static float aesl_internal_gpu_OC_y0[16];
-static const  char aesl_internal_XCL_WG_DIM_X_OC_str[13] = "XCL_WG_DIM_X";
-signed int (*__spir_rt_info_OC_5)[3];
-signed int (*__spir_rt_info_OC_6)[3];
-signed int (*__spir_rt_info_OC_1)[3];
-signed int (*__spir_rt_info_OC_2)[3];
-signed int (*__spir_rt_info_OC_3)[3];
-signed int (*__spir_rt_info_OC_4)[3];
-static const  char aesl_internal__OC_str[6] = "m_axi";
-static const  char aesl_internal__OC_str1[1];
-static const  char aesl_internal__OC_str2[10] = "s_axilite";
-static const  char aesl_internal__OC_str3[8] = "control";
-static unsigned int aesl_internal_rt_info_OC_0;
-signed int (*__spir_rt_info_OC_7)[3];
- char **__spir_rt_info_OC_8;
  char *__spir_rt_info_OC_9;
  char **__spir_rt_info_OC_10;
  char **__spir_rt_info_OC_11;
 signed long long *__spir_rt_info_OC_12;
+static const  char aesl_internal__OC_str[6] = "m_axi";
+signed int (*__spir_rt_info_OC_3)[3];
+signed int (*__spir_rt_info_OC_4)[3];
+signed int (*__spir_rt_info_OC_5)[3];
+signed int (*__spir_rt_info_OC_6)[3];
+signed int (*__spir_rt_info_OC_7)[3];
+ char **__spir_rt_info_OC_8;
+static bool aesl_internal_rt_info_OC_9;
+static  char *aesl_internal_rt_info_OC_10;
+static  char *aesl_internal_rt_info_OC_11;
+static unsigned long long aesl_internal_rt_info_OC_12;
+static const  char aesl_internal__OC_str4[12] = "member_name";
 static const  char aesl_internal__OC_str5[2] = "x";
 static const  char aesl_internal__OC_str6[2] = "y";
 static const  char aesl_internal__OC_str7[2] = "z";
 static const  char aesl_internal__OC_str8[16] = "global_offset.x";
 static const  char aesl_internal__OC_str9[16] = "global_offset.y";
-static const  char aesl_internal__OC_str10[16] = "global_offset.z";
-static const  char aesl_internal__OC_str11[11] = "group_id.x";
-static const  char aesl_internal__OC_str12[11] = "group_id.y";
-static const  char aesl_internal__OC_str13[11] = "group_id.z";
-static const  char aesl_internal_meta[1];
+static const  char aesl_internal__OC_str1[1];
+static const  char aesl_internal__OC_str2[10] = "s_axilite";
+static const  char aesl_internal__OC_str3[8] = "control";
+static unsigned int aesl_internal_rt_info_OC_0;
 static signed int aesl_internal_rt_info_OC_1[3];
 static signed int aesl_internal_rt_info_OC_2[3];
 static signed int aesl_internal_rt_info_OC_3[3];
@@ -209,13 +218,10 @@ static signed int aesl_internal_rt_info_OC_4[3];
 static signed int aesl_internal_rt_info_OC_5[3];
 static signed int aesl_internal_rt_info_OC_6[3];
 static signed int aesl_internal_rt_info_OC_7[3];
-static  char *aesl_internal_rt_info_OC_8;
-static bool aesl_internal_rt_info_OC_9;
-static  char *aesl_internal_rt_info_OC_10;
-static  char *aesl_internal_rt_info_OC_11;
-static const  char aesl_internal_instance[1];
-static const  char aesl_internal_meta9[1];
-static const  char aesl_internal_instance10[1];
+static const  char aesl_internal__OC_str10[16] = "global_offset.z";
+static const  char aesl_internal__OC_str11[11] = "group_id.x";
+static const  char aesl_internal__OC_str12[11] = "group_id.y";
+static const  char aesl_internal__OC_str13[11] = "group_id.z";
 
 
 /* Function Bodies */
@@ -346,13 +352,34 @@ void gpu(signed int *gmem, signed int *group_id_2e_x, signed int *group_id_2e_y,
   float *llvm_cbe_tmp__85;
   float llvm_cbe_tmp__86;
   float llvm_cbe_tmp__87;
+  float *llvm_cbe_tmp__88;
+  float *llvm_cbe_tmp__89;
+  float llvm_cbe_tmp__90;
+  float *llvm_cbe_tmp__91;
+  float llvm_cbe_tmp__92;
+  float llvm_cbe_tmp__93;
+  float *llvm_cbe_tmp__94;
+  float *llvm_cbe_tmp__95;
+  float llvm_cbe_tmp__96;
+  float llvm_cbe_tmp__97;
+  float *llvm_cbe_tmp__98;
+  float *llvm_cbe_tmp__99;
+  float llvm_cbe_tmp__100;
+  float *llvm_cbe_tmp__101;
+  float llvm_cbe_tmp__102;
+  float llvm_cbe_tmp__103;
+  float llvm_cbe_tmp__104;
+  float *llvm_cbe_tmp__105;
+  float *llvm_cbe_tmp__106;
+  float llvm_cbe_tmp__107;
+  float llvm_cbe_tmp__108;
   unsigned int llvm_cbe_gep_idx_2e_i_2e_i;
   unsigned int llvm_cbe_arg_z_2e_i_2e_0_2e_sum;
-  signed int *llvm_cbe_tmp__88;
+  signed int *llvm_cbe_tmp__109;
   unsigned int llvm_cbe_val_2e_i_2e_i;
   llvmBitCastUnion llvm_cbe_val_2e_i_2e_i__BITCAST_TEMPORARY;
   unsigned int llvm_cbe_indvar_2e_inc_2e_reg2mem_2e_0_2e_i_2e_i;
-  unsigned int llvm_cbe_tmp__89;
+  unsigned int llvm_cbe_tmp__110;
 
 
 #ifdef __SYNTHESIS__
@@ -1143,11 +1170,126 @@ llvm_cbe__Z21async_work_grou7_2e_rentry_2e_i_2e_i:
 #endif
   llvm_cbe_tmp__86 = (float )*llvm_cbe_tmp__85;
   llvm_cbe_tmp__87 = (float )((float )(llvm_cbe_tmp__84 + llvm_cbe_tmp__86));
+  llvm_cbe_tmp__88 = (float *)(&aesl_internal_gpu_OC_x1[(((signed int )llvm_cbe_tmp__82))
+#ifdef AESL_BC_SIM
+ % 16
+#endif
+]);
+
+#ifdef AESL_BC_SIM
+  assert(((signed int )llvm_cbe_tmp__82) < 16 && "Write access out of array 'aesl_internal_gpu.x1' bound?");
+
+#endif
+  *llvm_cbe_tmp__88 = llvm_cbe_tmp__87;
+  llvm_cbe_tmp__89 = (float *)(&aesl_internal_gpu_OC_x0[(((signed int )llvm_cbe_tmp__82))
+#ifdef AESL_BC_SIM
+ % 16
+#endif
+]);
+
+#ifdef AESL_BC_SIM
+  if (!(((signed int )llvm_cbe_tmp__82) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x0' bound?\n", __FILE__, __LINE__);
+
+#endif
+  llvm_cbe_tmp__90 = (float )*llvm_cbe_tmp__89;
+  llvm_cbe_tmp__91 = (float *)(&aesl_internal_gpu_OC_y0[(((signed int )llvm_cbe_tmp__82))
+#ifdef AESL_BC_SIM
+ % 16
+#endif
+]);
+
+#ifdef AESL_BC_SIM
+  if (!(((signed int )llvm_cbe_tmp__82) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.y0' bound?\n", __FILE__, __LINE__);
+
+#endif
+  llvm_cbe_tmp__92 = (float )*llvm_cbe_tmp__91;
+  llvm_cbe_tmp__93 = (float )((float )(llvm_cbe_tmp__90 - llvm_cbe_tmp__92));
+  llvm_cbe_tmp__94 = (float *)(&aesl_internal_gpu_OC_y1[(((signed int )llvm_cbe_tmp__82))
+#ifdef AESL_BC_SIM
+ % 16
+#endif
+]);
+
+#ifdef AESL_BC_SIM
+  assert(((signed int )llvm_cbe_tmp__82) < 16 && "Write access out of array 'aesl_internal_gpu.y1' bound?");
+
+#endif
+  *llvm_cbe_tmp__94 = llvm_cbe_tmp__93;
+  llvm_cbe_tmp__95 = (float *)(&aesl_internal_gpu_OC_x1[(((signed int )llvm_cbe_tmp__82))
+#ifdef AESL_BC_SIM
+ % 16
+#endif
+]);
+
+#ifdef AESL_BC_SIM
+  if (!(((signed int )llvm_cbe_tmp__82) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x1' bound?\n", __FILE__, __LINE__);
+
+#endif
+  llvm_cbe_tmp__96 = (float )*llvm_cbe_tmp__95;
+  llvm_cbe_tmp__97 = (float )((float )(llvm_cbe_tmp__96 * llvm_cbe_tmp__93));
+  llvm_cbe_tmp__98 = (float *)(&aesl_internal_gpu_OC_x2[(((signed int )llvm_cbe_tmp__82))
+#ifdef AESL_BC_SIM
+ % 16
+#endif
+]);
+
+#ifdef AESL_BC_SIM
+  assert(((signed int )llvm_cbe_tmp__82) < 16 && "Write access out of array 'aesl_internal_gpu.x2' bound?");
+
+#endif
+  *llvm_cbe_tmp__98 = llvm_cbe_tmp__97;
+  llvm_cbe_tmp__99 = (float *)(&aesl_internal_gpu_OC_x0[(((signed int )llvm_cbe_tmp__82))
+#ifdef AESL_BC_SIM
+ % 16
+#endif
+]);
+
+#ifdef AESL_BC_SIM
+  if (!(((signed int )llvm_cbe_tmp__82) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x0' bound?\n", __FILE__, __LINE__);
+
+#endif
+  llvm_cbe_tmp__100 = (float )*llvm_cbe_tmp__99;
+  llvm_cbe_tmp__101 = (float *)(&aesl_internal_gpu_OC_y1[(((signed int )llvm_cbe_tmp__82))
+#ifdef AESL_BC_SIM
+ % 16
+#endif
+]);
+
+#ifdef AESL_BC_SIM
+  if (!(((signed int )llvm_cbe_tmp__82) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.y1' bound?\n", __FILE__, __LINE__);
+
+#endif
+  llvm_cbe_tmp__102 = (float )*llvm_cbe_tmp__101;
+  llvm_cbe_tmp__103 = (float )((float )(llvm_cbe_tmp__102 + 0x1.921cacp1));
+  llvm_cbe_tmp__104 = (float )((float )(llvm_cbe_tmp__100 / llvm_cbe_tmp__103));
+  llvm_cbe_tmp__105 = (float *)(&aesl_internal_gpu_OC_y2[(((signed int )llvm_cbe_tmp__82))
+#ifdef AESL_BC_SIM
+ % 16
+#endif
+]);
+
+#ifdef AESL_BC_SIM
+  assert(((signed int )llvm_cbe_tmp__82) < 16 && "Write access out of array 'aesl_internal_gpu.y2' bound?");
+
+#endif
+  *llvm_cbe_tmp__105 = llvm_cbe_tmp__104;
+  llvm_cbe_tmp__106 = (float *)(&aesl_internal_gpu_OC_x2[(((signed int )llvm_cbe_tmp__82))
+#ifdef AESL_BC_SIM
+ % 16
+#endif
+]);
+
+#ifdef AESL_BC_SIM
+  if (!(((signed int )llvm_cbe_tmp__82) < 16)) fprintf(stderr, "%s:%d: warning: Read access out of array 'aesl_internal_gpu.x2' bound?\n", __FILE__, __LINE__);
+
+#endif
+  llvm_cbe_tmp__107 = (float )*llvm_cbe_tmp__106;
+  llvm_cbe_tmp__108 = (float )((float )(llvm_cbe_tmp__107 + llvm_cbe_tmp__104));
   llvm_cbe_gep_idx_2e_i_2e_i = (unsigned int )llvm_cbe_tmp__82 & 1073741823u;
   llvm_cbe_arg_z_2e_i_2e_0_2e_sum = (unsigned int )((unsigned int )(llvm_cbe_tmp__27&4294967295ull)) + ((unsigned int )(llvm_cbe_gep_idx_2e_i_2e_i&4294967295ull));
-  llvm_cbe_tmp__88 = (signed int *)(&gmem[(((signed int )llvm_cbe_arg_z_2e_i_2e_0_2e_sum))]);
-  llvm_cbe_val_2e_i_2e_i = (unsigned int )(llvm_cbe_val_2e_i_2e_i__BITCAST_TEMPORARY.Float = llvm_cbe_tmp__87, llvm_cbe_val_2e_i_2e_i__BITCAST_TEMPORARY.Int32);
-  *llvm_cbe_tmp__88 = llvm_cbe_val_2e_i_2e_i;
+  llvm_cbe_tmp__109 = (signed int *)(&gmem[(((signed int )llvm_cbe_arg_z_2e_i_2e_0_2e_sum))]);
+  llvm_cbe_val_2e_i_2e_i = (unsigned int )(llvm_cbe_val_2e_i_2e_i__BITCAST_TEMPORARY.Float = llvm_cbe_tmp__108, llvm_cbe_val_2e_i_2e_i__BITCAST_TEMPORARY.Int32);
+  *llvm_cbe_tmp__109 = llvm_cbe_val_2e_i_2e_i;
   llvm_cbe_indvar_2e_inc_2e_reg2mem_2e_0_2e_i_2e_i = (unsigned int )((unsigned int )(llvm_cbe_indvar_2e_reg2mem44_2e_0_2e_i_2e_i&4294967295ull)) + ((unsigned int )(1u&4294967295ull));
   _ssdm_SpecLoopFlatten(0u, ( char (*)[1])(*(&aesl_internal_str)));
   llvm_cbe_indvar_2e_reg2mem44_2e_0_2e_i_2e_i__PHI_TEMPORARY = (unsigned int )llvm_cbe_indvar_2e_inc_2e_reg2mem_2e_0_2e_i_2e_i;   /* for PHI node */
