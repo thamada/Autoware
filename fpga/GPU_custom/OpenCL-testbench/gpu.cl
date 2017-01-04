@@ -1,4 +1,4 @@
-//Time-stamp: <2017-01-04 23:38:28 hamada>
+//Time-stamp: <2017-01-05 02:01:19 hamada>
 //
 // Autoware for FPGAs project.
 // 
@@ -33,12 +33,9 @@ gpu(__global float* x,     __global float* y,     __global float* z)
         x1[idx] = x0[idx] + y0[idx];
         y1[idx] = x0[idx] - y0[idx];
 
-				x2[idx] = x1[idx] * y1[idx];
-				y2[idx] = x0[idx] / (y1[idx]+3.1415f);
-
+        x2[idx] = x1[idx] * y1[idx];
+        y2[idx] = x0[idx] / (y1[idx]+3.1415f);
 
         z[idx] = x2[idx] + y2[idx];
-
-
     }
 }

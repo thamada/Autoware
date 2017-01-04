@@ -1,5 +1,5 @@
 -- ==============================================================
--- Time-stamp: <2017-01-04 23:42:25 hamada>
+-- Time-stamp: <2017-01-05 02:03:13 hamada>
 -- Copyright (C) 2017 Tsuyoshi Hamada. All Rights Reserved.
 --
 -- Autoware for FPGAs project.
@@ -24,10 +24,10 @@ generic (
     C_M_AXI_GMEM_BUSER_WIDTH : INTEGER := 1;
     C_S_AXI_CONTROL_ADDR_WIDTH : INTEGER := 7;
     C_S_AXI_CONTROL_DATA_WIDTH : INTEGER := 32;
+    C_M_AXI_GMEM_USER_VALUE : INTEGER := 0;
     C_M_AXI_GMEM_TARGET_ADDR : INTEGER := 0;
     C_M_AXI_GMEM_PROT_VALUE : INTEGER := 0;
-    C_M_AXI_GMEM_CACHE_VALUE : INTEGER := 3;
-    C_M_AXI_GMEM_USER_VALUE : INTEGER := 0 );
+    C_M_AXI_GMEM_CACHE_VALUE : INTEGER := 3 );
 port (
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;

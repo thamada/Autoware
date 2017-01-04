@@ -1,4 +1,4 @@
-#Time-stamp: <2017-01-05 00:22:16 hamada>
+#Time-stamp: <2017-01-05 02:00:18 hamada>
 
 /* Provide Declarations */
 #include <stdarg.h>
@@ -1299,4 +1299,3 @@ llvm_cbe__Z21async_work_grou7_2e_rentry_2e_i_2e_i:
 llvm_cbe___AESL_call_work_item_NA6_2e_exit:
   return;
 }
-
