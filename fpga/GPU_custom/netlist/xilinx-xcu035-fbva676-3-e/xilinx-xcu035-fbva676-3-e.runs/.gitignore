@@ -1,4 +1,4 @@
-#Time-stamp: <2017-01-05 06:54:58 hamada>
+#Time-stamp: <2017-01-05 07:38:38 hamada>
 
 /*~
 /.*~
@@ -10,6 +10,7 @@
 #/synth_1/gpu.tcl
 #/synth_1/gpu_utilization_synth.rpt
 
+/synth_1/.srcs/
 /synth_1/.Vivado_Synthesis.queue.rst
 /synth_1/.Xil/
 /synth_1/.vivado.begin.rst
@@ -29,6 +30,7 @@
 /synth_1/vivado.jou
 /synth_1/vivado.pb
 /synth_1/project.wdf
+
 
 # -------------------------------------------
 # impl_1
