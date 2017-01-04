@@ -1,0 +1,8 @@
+-- ==============================================================
+-- Time-stamp: <2017-01-04 20:07:33 hamada>
+--
+-- Copyright (C) 2017 Tsuyoshi Hamada. All Rights Reserved.
+-- 
+-- RTL design for my OpenCL-based custom GPU
+--
+-- ===========================================================

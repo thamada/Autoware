@@ -1,0 +1,4 @@
+gpu_x0
+gpu_control_s_axi
+gpu_gmem_m_axi
+gpu
