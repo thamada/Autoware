@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-05 06:11:52 hamada>
+Time-stamp: <2017-01-05 06:51:59 hamada>
 
 # An OpenCL-enebled GPU customized for Autoware
 
@@ -30,4 +30,6 @@ Autoware for FPGAs project.
 - GTXE2 Transceivers: 0
 - GTXE3 Transceivers: 16
 
-## GPU
+## GPU Architecture
+- 64 computing cores for handling OpenCL threads
+- Each core has floag-add, float-sub, float-mul and float-div unit.

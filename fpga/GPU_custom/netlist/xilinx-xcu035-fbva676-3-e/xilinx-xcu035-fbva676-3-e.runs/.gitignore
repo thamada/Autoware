@@ -1,4 +1,4 @@
-#Time-stamp: <2017-01-05 06:40:40 hamada>
+#Time-stamp: <2017-01-05 06:54:58 hamada>
 
 /*~
 /.*~
@@ -28,7 +28,7 @@
 /synth_1/runme.sh*
 /synth_1/vivado.jou
 /synth_1/vivado.pb
-
+/synth_1/project.wdf
 
 # -------------------------------------------
 # impl_1
