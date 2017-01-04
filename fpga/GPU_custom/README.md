@@ -1,6 +1,7 @@
-Time-stamp: <2017-01-04 22:07:14 hamada>
+Time-stamp: <2017-01-04 22:14:37 hamada>
 
 Copyright (C) 2017 by Tsuyoshi Hamada. All Rights Reserved.
+
 Autoware for FPGAs project.
 
 # FPGA design for my OpenCL-enabled custom GPU
