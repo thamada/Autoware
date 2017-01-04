@@ -1,8 +1,9 @@
 -- ==============================================================
--- Time-stamp: <2017-01-04 20:07:33 hamada>
---
+-- Time-stamp: <2017-01-04 21:47:21 hamada>
 -- Copyright (C) 2017 Tsuyoshi Hamada. All Rights Reserved.
--- 
--- RTL design for my OpenCL-based custom GPU
 --
--- ===========================================================
+-- Autoware for FPGAs project.
+-- 
+-- --------------------------------------------------------------
+-- RTL design for my OpenCL-based custom GPU
+-- ==============================================================
