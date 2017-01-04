@@ -1,3 +1,12 @@
 *~
 .*~
 *.tar
+/autoware_in_fpga/
+/btf/
+/proj/
+/list.Grav*
+/*.vhd
+/*.ucf
+/Makefile
+
+
