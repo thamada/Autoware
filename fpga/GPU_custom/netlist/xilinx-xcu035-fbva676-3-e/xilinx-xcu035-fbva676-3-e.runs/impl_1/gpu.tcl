@@ -53,14 +53,10 @@ set rc [catch {
   set_param project.singleFileAddWarning.threshold 0
   set_property webtalk.parent_dir /home/hamada/git/Autoware/fpga/GPU_custom/netlist/xilinx-xcu035-fbva676-3-e/xilinx-xcu035-fbva676-3-e.cache/wt [current_project]
   set_property parent.project_path /home/hamada/git/Autoware/fpga/GPU_custom/netlist/xilinx-xcu035-fbva676-3-e/xilinx-xcu035-fbva676-3-e.xpr [current_project]
+  set_property ip_repo_paths /home/hamada/git/Autoware/fpga/GPU_custom/netlist/xilinx-xcu035-fbva676-3-e [current_project]
   set_property ip_output_repo /home/hamada/git/Autoware/fpga/GPU_custom/netlist/xilinx-xcu035-fbva676-3-e/xilinx-xcu035-fbva676-3-e.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   add_files -quiet /home/hamada/git/Autoware/fpga/GPU_custom/netlist/xilinx-xcu035-fbva676-3-e/xilinx-xcu035-fbva676-3-e.runs/synth_1/gpu.dcp
-  read_xdc -unmanaged /home/hamada/git/Autoware/fpga/GPU_custom/vhdl/gpu_ap_fadd_2_full_dsp_32_ip.tcl
-  read_xdc -unmanaged /home/hamada/git/Autoware/fpga/GPU_custom/vhdl/gpu_ap_fcmp_0_no_dsp_32_ip.tcl
-  read_xdc -unmanaged /home/hamada/git/Autoware/fpga/GPU_custom/vhdl/gpu_ap_fdiv_7_no_dsp_32_ip.tcl
-  read_xdc -unmanaged /home/hamada/git/Autoware/fpga/GPU_custom/vhdl/gpu_ap_fmul_1_max_dsp_32_ip.tcl
-  read_xdc -unmanaged /home/hamada/git/Autoware/fpga/GPU_custom/vhdl/gpu_ap_fsub_2_full_dsp_32_ip.tcl
   link_design -top gpu -part xcku035-fbva676-3-e
   write_hwdef -file gpu.hwdef
   close_msg_db -file init_design.pb

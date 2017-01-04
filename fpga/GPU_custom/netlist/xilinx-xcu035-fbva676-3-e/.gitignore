@@ -1,12 +1,14 @@
+#Time-stamp: <2017-01-05 07:52:01 hamada>
+#
+# (c) Copyright 2017 by Tsuyoshi Hamada. All rights reserved.
+#
 
 #/xilinx-xcu035-fbva676-3-e.runs/
 #/xilinx-xcu035-fbva676-3-e.xpr
 
-/xilinx-xcu035-fbva676-3-e.cache/
-/xilinx-xcu035-fbva676-3-e.hw/
-/xilinx-xcu035-fbva676-3-e.ip_user_files/
-/xilinx-xcu035-fbva676-3-e.sim/
-/xilinx-xcu035-fbva676-3-e.srcs/
-
-
+/xilinx-xcu035-fbva676-3-e.cache
+/xilinx-xcu035-fbva676-3-e.hw
+/xilinx-xcu035-fbva676-3-e.ip_user_files
+/xilinx-xcu035-fbva676-3-e.sim
+/xilinx-xcu035-fbva676-3-e.srcs
 
