@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-06 19:50:22 hamada>
+Time-stamp: <2017-01-06 19:51:31 hamada>
 
 # Utilization Design Information
 
@@ -20,7 +20,7 @@ Autoware for FPGA project: (c) Copyright 2017 by Tsuyoshi Hamada. All rights res
 
 |        Site Type        | Used | Fixed | Available | Util% |
 |-------------------------|------|-------|-----------|-------|
-| Slice LUTs*             | 9339 |     0 |     41000 | 22.78 |
+| Slice LUTs              | 9339 |     0 |     41000 | 22.78 |
 |   LUT as Logic          | 9339 |     0 |     41000 | 22.78 |
 |   LUT as Memory         |    0 |     0 |     13400 |  0.00 |
 | Slice Registers         | 1058 |     0 |     82000 |  1.29 |
