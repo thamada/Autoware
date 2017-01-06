@@ -1,10 +1,7 @@
 ---------------------------------------------------------------------
 ----                                                             ----
----- Copyright (C) 2004-2017 by Tsuyoshi Hamada.                 ----
-----                                  All rights reserved.       ----
-----                                                             ----
----- Contact: hamada@progrape.jp                                 ----
----- License: GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 ----
+---- Copyright (C) 2000 Richard Herveille                        ----
+----                    richard@asics.ws                         ----
 ----                                                             ----
 ---- This source file may be used and distributed without        ----
 ---- restriction provided that this copyright statement is not   ----
@@ -26,37 +23,49 @@
 ---- POSSIBILITY OF SUCH DAMAGE.                                 ----
 ----                                                             ----
 ---------------------------------------------------------------------
---
---
---
--- DMAR_STATE is used only 
---                dmar_mem_adr.vhd  
---                dmar_mem_re.vhd
---                dmar_start_adr.vhd
--- dmar_dbus_hiz and dma_mem_data do not used DMAR_STATE.
+-- Package containing i2c master byte controller component. Component
+-- declaration expanded and separated into this file by jan@gaisler.com.
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
-entity dmar_state is
-  port (
-    RST      : in std_logic;
-    CLK      : in std_logic;
-    ENABLE   : in std_logic;
-    STATE    : out std_logic_vector(1 downto 0) );
-end dmar_state;
+package i2coc is
+  component i2c_master_byte_ctrl is
+    generic (filter : integer; dynfilt : integer);
+    port (
+     clk    : in std_logic;
+     rst    : in std_logic;   -- active high reset
+     nReset : in std_logic;   -- asynchornous active low reset
+                              -- (not used in GRLIB)
+     ena    : in std_logic; -- core enable signal
+     
+     clk_cnt : in std_logic_vector(15 downto 0);	-- 4x SCL
 
-architecture rtl of dmar_state is
+     -- input signals
+     start,
+     stop,
+     read,
+     write,
+     ack_in : std_logic;
+     din    : in std_logic_vector(7 downto 0);
+     filt   : in std_logic_vector((filter-1)*dynfilt downto 0);
 
-component dmaw_state
-  port (
-    RST      : in std_logic;
-    CLK      : in std_logic;
-    ENABLE   : in std_logic;
-    STATE    : out std_logic_vector(1 downto 0) );
-end component;
+     -- output signals
+     cmd_ack  : out std_logic;
+     ack_out  : out std_logic;
+     i2c_busy : out std_logic;
+     i2c_al   : out std_logic;
+     dout     : out std_logic_vector(7 downto 0);
 
-begin
-  u0 : dmaw_state port map(RST=>RST, CLK=>CLK, ENABLE=>ENABLE, STATE=>STATE);
-end rtl;
+     -- i2c lines
+     scl_i   : in std_logic;  -- i2c clock line input
+     scl_o   : out std_logic; -- i2c clock line output
+     scl_oen : out std_logic; -- i2c clock line output enable, active low
+     sda_i   : in std_logic;  -- i2c data line input
+     sda_o   : out std_logic; -- i2c data line output
+     sda_oen : out std_logic  -- i2c data line output enable, active low
+     );
+  end component i2c_master_byte_ctrl;
+end;
+
