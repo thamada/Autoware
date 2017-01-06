@@ -1,10 +1,10 @@
-#Time-stamp: <2017-01-06 08:50:37 hamada>
+#Time-stamp: <2017-01-06 09:21:02 hamada>
 
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity sqrt is
+entity sqrt_16_9_nearest_even is
 port (
     ap_clk : IN STD_LOGIC;
     ap_rst : IN STD_LOGIC;
@@ -18,7 +18,18 @@ port (
 end;
 
 
-architecture behav of sqrt_ is 
+architecture rtl of sqrt_16_9_nearest_even is 
+
+    attribute CORE_GENERATION_INFO : STRING;
+
+    constant ap_const_logic_1 : STD_LOGIC := '1';
+    constant ap_const_logic_0 : STD_LOGIC := '0';
+    constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (1 downto 0) := "01";
+    constant ap_ST_fsm_state2 : STD_LOGIC_VECTOR (1 downto 0) := "10";
+    constant ap_const_lv32_0 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
+    constant ap_const_lv1_1 : STD_LOGIC_VECTOR (0 downto 0) := "1";
+    constant ap_const_lv32_1 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000001";
+
     signal ap_CS_fsm : STD_LOGIC_VECTOR (1 downto 0) := "01";
     attribute fsm_encoding : string;
     attribute fsm_encoding of ap_CS_fsm : signal is "none";
@@ -34,16 +45,6 @@ architecture behav of sqrt_ is
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
     signal ap_NS_fsm : STD_LOGIC_VECTOR (1 downto 0);
 
-    attribute CORE_GENERATION_INFO : STRING;
-    attribute CORE_GENERATION_INFO of behav : architecture is
-    constant ap_const_logic_1 : STD_LOGIC := '1';
-    constant ap_const_logic_0 : STD_LOGIC := '0';
-    constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (1 downto 0) := "01";
-    constant ap_ST_fsm_state2 : STD_LOGIC_VECTOR (1 downto 0) := "10";
-    constant ap_const_lv32_0 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000000";
-    constant ap_const_lv1_1 : STD_LOGIC_VECTOR (0 downto 0) := "1";
-    constant ap_const_lv32_1 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000000001";
-
     component cordic_base IS
     port (
         ap_clk : IN STD_LOGIC;
@@ -56,9 +57,11 @@ architecture behav of sqrt_ is
         ap_return : OUT STD_LOGIC_VECTOR (8 downto 0) );
     end component;
 
+
+
 begin
 
-    grp_cordic_base_fu_29 : component cordic_base
+    u0: component cordic_base
     port map (
         ap_clk => ap_clk,
         ap_rst => ap_rst,
@@ -69,8 +72,7 @@ begin
         inputData_in_V_read => x_in_V,
         ap_return => grp_cordic_base_fu_29_ap_return);
 
-
-    ap_CS_fsm_assign_proc : process(ap_clk)
+    u1: process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst = '1') then
@@ -82,7 +84,7 @@ begin
     end process;
 
 
-    ap_reg_grp_cordic_base_fu_29_ap_start_assign_proc : process(ap_clk)
+    u2: process(ap_clk)
     begin
         if (ap_clk'event and ap_clk =  '1') then
             if (ap_rst = '1') then
@@ -98,7 +100,7 @@ begin
     end process;
 
 
-    ap_NS_fsm_assign_proc : process (ap_start, ap_CS_fsm, grp_cordic_base_fu_29_ap_done)
+    u3: process (ap_start, ap_CS_fsm, grp_cordic_base_fu_29_ap_done)
     begin
         case ap_CS_fsm is
             when ap_ST_fsm_state1 => 
@@ -120,7 +122,7 @@ begin
     ap_CS_fsm_state1 <= ap_CS_fsm(0 downto 0);
     ap_CS_fsm_state2 <= ap_CS_fsm(1 downto 1);
 
-    ap_done_assign_proc : process(grp_cordic_base_fu_29_ap_done, ap_CS_fsm_state2)
+    u4: process(grp_cordic_base_fu_29_ap_done, ap_CS_fsm_state2)
     begin
         if (((ap_const_lv1_1 = ap_CS_fsm_state2) and not((ap_const_logic_0 = grp_cordic_base_fu_29_ap_done)))) then 
             ap_done <= ap_const_logic_1;
@@ -130,7 +132,7 @@ begin
     end process;
 
 
-    ap_idle_assign_proc : process(ap_start, ap_CS_fsm_state1)
+    u5: process(ap_start, ap_CS_fsm_state1)
     begin
         if (((ap_const_logic_0 = ap_start) and (ap_CS_fsm_state1 = ap_const_lv1_1))) then 
             ap_idle <= ap_const_logic_1;
@@ -140,7 +142,7 @@ begin
     end process;
 
 
-    ap_ready_assign_proc : process(grp_cordic_base_fu_29_ap_done, ap_CS_fsm_state2)
+    u6: process(grp_cordic_base_fu_29_ap_done, ap_CS_fsm_state2)
     begin
         if (((ap_const_lv1_1 = ap_CS_fsm_state2) and not((ap_const_logic_0 = grp_cordic_base_fu_29_ap_done)))) then 
             ap_ready <= ap_const_logic_1;
@@ -152,7 +154,7 @@ begin
     grp_cordic_base_fu_29_ap_start <= ap_reg_grp_cordic_base_fu_29_ap_start;
     sqrtX_out_V <= grp_cordic_base_fu_29_ap_return;
 
-    sqrtX_out_V_ap_vld_assign_proc : process(grp_cordic_base_fu_29_ap_done, ap_CS_fsm_state2)
+    u7: process(grp_cordic_base_fu_29_ap_done, ap_CS_fsm_state2)
     begin
         if (((ap_const_lv1_1 = ap_CS_fsm_state2) and not((ap_const_logic_0 = grp_cordic_base_fu_29_ap_done)))) then 
             sqrtX_out_V_ap_vld <= ap_const_logic_1;
@@ -161,4 +163,4 @@ begin
         end if; 
     end process;
 
-end behav;
+end rtl;
