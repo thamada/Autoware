@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-06 19:45:27 hamada>
+Time-stamp: <2017-01-06 19:50:22 hamada>
 
 # Utilization Design Information
 
@@ -6,14 +6,14 @@ Autoware for FPGA project: (c) Copyright 2017 by Tsuyoshi Hamada. All rights res
 
 ## Table of Contents
 
-1. [Slice Logic](##Slice_Logic)
-1. [Summary of Registers by Type](##Summary_of_Registers_by_Type)
-1. [Memory](##Memory)
-1. [DSP](##DSP)
-1. [IO and GT Specific](##IO_and_GT_Specific)
-1. [Clocking](##Clocking)
-1. [Specific Feature](##Specific Feature)
-1. [Primitives](##Primitives)
+1. [Slice Logic](#Slice_Logic)
+	 1. [Summary of Registers by Type](#Summary of Registers by Type)
+1. [Memory](#Memory)
+1. [DSP](#DSP)
+1. [IO and GT Specific](#IO and GT Specific)
+1. [Clocking](#Clocking)
+1. [Specific Feature](#Specific Feature)
+1. [Primitives](#Primitives)
 
 ## Slice Logic
 
@@ -30,7 +30,7 @@ Autoware for FPGA project: (c) Copyright 2017 by Tsuyoshi Hamada. All rights res
 | F8 Muxes                |  144 |     0 |     10250 |  1.40 |
 
 
-## Summary of Registers by Type
+### Summary of Registers by Type
 
 
 | Total | Clock Enable | Synchronous | Asynchronous |
