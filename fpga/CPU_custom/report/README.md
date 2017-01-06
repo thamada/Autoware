@@ -1,4 +1,4 @@
-Time-stamp: <2017-01-06 19:43:48 hamada>
+Time-stamp: <2017-01-06 19:45:27 hamada>
 
 # Utilization Design Information
 
@@ -14,8 +14,6 @@ Autoware for FPGA project: (c) Copyright 2017 by Tsuyoshi Hamada. All rights res
 1. [Clocking](##Clocking)
 1. [Specific Feature](##Specific Feature)
 1. [Primitives](##Primitives)
-1. [Black Boxes](##Black_Boxes)
-1. [Instantiated Netlists](##Instantiated_Netlists)
 
 ## Slice Logic
 
@@ -140,18 +138,5 @@ Autoware for FPGA project: (c) Copyright 2017 by Tsuyoshi Hamada. All rights res
 | MUXF8    |  144 |               MuxFx |
 | LUT1     |    2 |                 LUT |
 | BUFG     |    1 |               Clock |
-
-
-## Black Boxes
-
-
-| Ref Name | Used |
-
-
-
-9. Instantiated Netlists
-
-
-| Ref Name | Used |
 
 
