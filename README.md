@@ -22,11 +22,6 @@ Integrated open-source software for urban autonomous driving. The following func
 
 Autoware is protected by BSD License. Please use it on your own responsibility. For safe use, we provide a ROSBAG-based simulation method for those who do not own real autonomous vehicles. In case that you use Autoware with real autonomous vehicles, **please formulate safety measures and assessment of risk before field testing.**
 
-## License
-
-* New BSD License
-    * See LICENSE
-
 ## Spec Recommendation
 
 - # of CPU cores: 8
